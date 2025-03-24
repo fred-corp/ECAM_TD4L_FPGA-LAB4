@@ -22,6 +22,10 @@ lib.add_source_files("../../rtl/*/*.vhd")
 lib.add_source_files("../../open-logic/src/base/vhdl/*.vhd")
 lib.add_source_files("../../open-logic/src/intf/vhdl/*.vhd")
 
+# GHDL Flags
+vu.set_compile_option("ghdl.a_flags", ["--std=08", "-frelaxed"])
+vu.set_sim_option("ghdl.elab_flags", ["-frelaxed"])
+
 # Run vunit function
 vu.main()
 
