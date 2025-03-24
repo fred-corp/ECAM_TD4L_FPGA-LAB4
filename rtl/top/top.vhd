@@ -43,6 +43,14 @@ architecture rtl of top is
     signal uart_rx_valid : STD_LOGIC := '0';
     signal uart_rx_data : STD_LOGIC_VECTOR(7 downto 0);
 
+    -- APB
+    signal apb_paddr : std_logic_vector(7 downto 0);
+    signal apb_psel : std_logic;
+    signal apb_penable : std_logic;
+    signal apb_pwrite : std_logic;
+    signal apb_pwdata : std_logic_vector(15 downto 0);
+    signal apb_prdata : std_logic_vector(15 downto 0);
+
     -- LEDs
     signal led_out_r : STD_LOGIC := '0';
     signal led_out_g : STD_LOGIC := '0';
@@ -78,6 +86,28 @@ begin
         Rx_ParityError => open,
         Uart_Tx => uart_txd,
         Uart_Rx => uart_rxd
+    );
+
+    -- *** UART to APB ***
+    apb_inst : work.uart_protocol
+    generic map (
+        ClkFreq_g => 12.0e6,
+        BaudRate_g => 230400.0
+    )
+    port map (
+        clk => Clk,
+        reset => reset,
+        rx_data => uart_rx_data,
+        rx_valid => uart_rx_valid,
+        tx_data => uart_tx_data,
+        tx_valid => uart_tx_valid,
+        tx_ready => uart_tx_ready,
+        m_paddr => apb_paddr,
+        m_psel => apb_psel,
+        m_penable => apb_penable,
+        m_pwrite => apb_pwrite,
+        m_pwdata => apb_pwdata,
+        m_prdata => apb_prdata
     );
 
     -------- TO BE REMOVED DURING EXERCISES -----------------
