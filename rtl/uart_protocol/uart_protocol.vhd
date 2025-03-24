@@ -35,8 +35,9 @@ end entity uart_protocol;
 architecture rtl of uart_protocol is
     type UART_STATUS is
         (
-            WRITE_ADDRESS, WRITE_DATA0, WRITE_DATA1, WRITE_APB_SETUP, WRITE_APB_EXECUTE, WRITE_APB_DONE, WRITE_ANSWER_HEADER, WRITE_ANSWER_OK,
-            READ_ADDRESS, READ_APB_SETUP, READ_APB_EXECUTE, READ_APB_DONE, READ_ANSWER_HEADER, READ_ANSWER_DATA0, READ_ANSWER_DATA1,
+            WRITE_ADDRESS, WRITE_DATA0, WRITE_DATA1, WRITE_ANSWER_HEADER, WRITE_ANSWER_OK,
+            READ_ADDRESS, READ_ANSWER_HEADER, READ_ANSWER_DATA0, READ_ANSWER_DATA1,
+            APB_SETUP, APB_EXECUTE, APB_DONE,
             IDLE
         );
     
@@ -84,6 +85,48 @@ begin
                         wr_data(7 downto 0) <= rx_data;
                         state <= APB_SETUP;
                     end if;
+                when WRITE_ANSWER_HEADER =>
+                    tx_data <= x"AA";
+                    tx_valid <= '1';
+                    if tx_ready = '1' then
+                        tx_valid <= '0';
+                        state <= WRITE_ANSWER_OK;
+                    end if;
+                when WRITE_ANSWER_OK =>
+                    tx_data <= x"00";
+                    tx_valid <= '1';
+                    if tx_ready = '1' then
+                        tx_valid <= '0';
+                        state <= IDLE;
+                    end if;
+                
+                when READ_ADDRESS =>
+                    if rx_valid = '1' then 
+                        address <= rx_data;
+                        state <= APB_SETUP;
+                    end if;
+                when READ_ANSWER_HEADER =>
+                    tx_data <= x"55";
+                    tx_valid <= '1';
+                    if tx_ready = '1' then
+                        tx_valid <= '0';
+                        state <= READ_ANSWER_DATA0;
+                    end if;
+                when READ_ANSWER_DATA0 =>
+                    tx_data <= apb_data(15 downto 8);
+                    tx_valid <= '1';
+                    if tx_ready = '1' then
+                        tx_valid <= '0';
+                        state <= READ_ANSWER_DATA1;
+                    end if;
+                when READ_ANSWER_DATA1 =>
+                    tx_data <= apb_data(7 downto 0);
+                    tx_valid <= '1';
+                    if tx_ready = '1' then
+                        tx_valid <= '0';
+                        state <= IDLE;
+                    end if;
+                
                 when APB_SETUP =>
                     m_psel <= '1';
                     m_paddr <= address;
@@ -102,21 +145,6 @@ begin
                     else
                         state <= READ_ANSWER_HEADER;
                     end if;
-                when WRITE_ANSWER_HEADER =>
-                    tx_data <= x"AA";
-                    tx_valid <= '1';
-                    if tx_ready = '1' then
-                        tx_valid <= '0';
-                        state <= WRITE_ANSWER_OK;
-                    end if;
-                when WRITE_ANSWER_OK =>
-                    tx_data <= x"00";
-                    tx_valid <= '1';
-                    if tx_ready = '1' then
-                        tx_valid <= '0';
-                        state <= IDLE;
-                    end if;
-                
                 when others =>
                     null;
             end case;
