@@ -42,10 +42,10 @@ architecture rtl of uart_protocol is
         );
     
     signal state : UART_STATUS := IDLE;
-    signal write : std_logic := '0';
-    signal apb_data : std_logic_vector(15 downto 0);
-    signal address : std_logic_vector(7 downto 0);
-    signal wr_data : std_logic_vector(15 downto 0);
+    signal write_flag : std_logic := '0';
+    signal apb_data : std_logic_vector(15 downto 0) := (others => '0');
+    signal address : std_logic_vector(7 downto 0) := (others => '0');
+    signal wr_data : std_logic_vector(15 downto 0) := (others => '0');
 
 begin
     process (clk)
@@ -60,10 +60,10 @@ begin
                     if rx_valid = '1' then
                         if rx_data = x"AA" then
                             state <= WRITE_ADDRESS;
-                            write <= '1';
+                            write_flag <= '1';
                         elsif rx_data = x"55" then
                             state <= READ_ADDRESS;
-                            write <= '0';
+                            write_flag <= '0';
                         else
                             state <= IDLE;
                         end if;
@@ -130,7 +130,7 @@ begin
                 when APB_SETUP =>
                     m_psel <= '1';
                     m_paddr <= address;
-                    m_pwrite <= write;
+                    m_pwrite <= write_flag;
                     m_pwdata <= wr_data;
                     m_penable <= '0';
                     state <= APB_EXECUTE;
@@ -140,9 +140,9 @@ begin
                     state <= APB_DONE;
                 when APB_DONE =>
                     m_psel <= '0';
-                    if write = '1' then
+                    if write_flag = '1' then
                         state <= WRITE_ANSWER_HEADER;
-                    else
+                    elsif write_flag = '0' then
                         state <= READ_ANSWER_HEADER;
                     end if;
                 when others =>
