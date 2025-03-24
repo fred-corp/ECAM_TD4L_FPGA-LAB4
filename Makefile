@@ -10,6 +10,8 @@ FPGA_DEVICE = up5k
 FPGA_PACKAGE = sg48
 FPGA_PINMAP = pinmap.pcf
 
+all : bitstream flash
+
 bitstream:
 	@echo "Creating bitstream"
 	mkdir -p $(BUILD_DIR)
