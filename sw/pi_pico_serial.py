@@ -3,7 +3,7 @@ import serial
 import struct
 
 class PicoIce:
-    def __init__(self, portName="/dev/ttyACM1"):
+    def __init__(self, portName="/dev/tty.usbmodem1103"):
         self.ser = serial.Serial(portName, 230400, timeout=0.5)
 
     def write(self, addr, data):
