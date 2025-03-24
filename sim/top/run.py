@@ -19,8 +19,8 @@ vu.add_verification_components()
 # Add all files ending in .vhd in current working directory to library
 lib.add_source_files("*.vhd")
 lib.add_source_files("../../rtl/*/*.vhd")
-lib.add_source_files("../../open-logic-main/src/base/vhdl/*.vhd")
-lib.add_source_files("../../open-logic-main/src/intf/vhdl/*.vhd")
+lib.add_source_files("../../open-logic/src/base/vhdl/*.vhd")
+lib.add_source_files("../../open-logic/src/intf/vhdl/*.vhd")
 
 # Run vunit function
 vu.main()
