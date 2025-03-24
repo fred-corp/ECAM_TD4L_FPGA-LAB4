@@ -1,0 +1,1222 @@
+<HTML>
+<HEAD>
+<TITLE>Synthesis Report</TITLE>
+<link href="file:////home/seb/lscc/radiant/2024.2/data/theme/css/light/report.css" rel="stylesheet" type="text/css" media="screen"/>
+<link href="file:////home/seb/lscc/radiant/2024.2/data/theme/css/print/report.css" rel="stylesheet" type="text/css" media="print"/>
+<style type="text/css">
+#toc {
+  position: fixed;
+  right: 2px;
+  top: 2px;
+  padding: 2px 5px 2px 5px;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+}
+#toc_list {
+  display: none;
+  }
+</style>
+
+<script type="text/javascript">
+<!--
+function showTocList() {
+var a = document.getElementById("toc_list");
+a.style.display = "block";
+}
+
+function hideTocList() {
+var a = document.getElementById("toc_list");
+if (a)
+    a.style.display = "none";
+}
+
+//-->
+</script>
+
+</HEAD>
+
+<BODY>
+
+<DIV id="content" onclick="hideTocList()"><PRE>
+<A name="Syn"></A><B><U><big>Synthesis Report</big></U></B>
+#Build: Synplify Pro (R) V-2023.09LR-2, Build 364R, Oct  3 2024
+#install: /home/seb/lscc/radiant/2024.2/synpbase
+#OS: Linux 
+#Hostname: sebsky-dev-laptop
+
+# Sat Mar 22 21:01:14 2025
+
+#Implementation: impl_1
+
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys HDL Compiler, Version comp202309synp1, Build 364R, Built Oct  3 2024 00:20:29, @5664073
+
+@N|Running in 64-bit mode
+###########################################################[
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys VHDL Compiler, Version comp202309synp1, Build 364R, Built Oct  3 2024 00:20:29, @5664073
+
+@N|Running in 64-bit mode
+Location map warning &quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map&quot;:39 - Attempted redefinition of package lfd2nx1.components
+Location map warning &quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map&quot;:43 - Attempted redefinition of package lfd2nx2.components
+Location map warning &quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map&quot;:49 - Attempted redefinition of package lfmxo5t1.components
+@N|stack limit increased to max
+@N:&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:12:7:12:9|Top entity is set to top.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_array.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_attribute.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/lscc/radiant/2024.2/cae_library/synthesis/vhdl/iCE40UP.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_math.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_logic.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&apos;.
+@N: CD895 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:68:20:68:24|Setting attribute syn_ramstyle to &quot;no_rw_check&quot; on shared variable mem_v
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/rtl/top/top.vhd&apos;.
+VHDL syntax check successful!
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 185MB peak: 185MB)
+
+
+Process completed successfully.
+# Sat Mar 22 21:01:15 2025
+
+###########################################################]
+###########################################################[
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys Verilog Compiler, Version comp202309synp1, Build 364R, Built Oct  3 2024 00:20:29, @5664073
+
+@N|Running in 64-bit mode
+@I::&quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/generic/ice40up.v&quot; (library work)
+@I::&quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/vlog/hypermods.v&quot; (library __hyper__lib__)
+@I::&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_addsub.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_addsub.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/adder_subtractor/rtl/lscc_add_sub.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/adder_subtractor/rtl/lscc_add_sub.v&quot;:313:13:313:25|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/adder_subtractor/rtl/lscc_add_sub.v&quot;:333:13:333:24|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_add.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_add.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/adder/rtl/lscc_adder.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_complex_mult.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_complex_mult.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/complex_mult/rtl/lscc_complex_mult.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_complex_mult.v&quot;:92:11:92:23|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_complex_mult.v&quot;:101:11:101:22|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_counter.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_counter.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/counter/rtl/lscc_cntr.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/counter/rtl/lscc_cntr.v&quot;:129:13:129:25|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/counter/rtl/lscc_cntr.v&quot;:143:13:143:24|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_fifo.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_fifo.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo/rtl/lscc_fifo.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo/rtl/lscc_fifo.v&quot;:3271:17:3271:29|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo/rtl/lscc_fifo.v&quot;:3278:17:3278:28|Read directive translate_on.
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo/rtl/lscc_fifo.v&quot;:3335:17:3335:29|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo/rtl/lscc_fifo.v&quot;:3342:17:3342:28|Read directive translate_on.
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo/rtl/lscc_fifo.v&quot;:3397:17:3397:29|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo/rtl/lscc_fifo.v&quot;:3404:17:3404:28|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_fifo_dc.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_fifo_dc.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo_dc/rtl/lscc_fifo_dc.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo_dc/rtl/lscc_fifo_dc.v&quot;:5121:25:5121:37|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo_dc/rtl/lscc_fifo_dc.v&quot;:5125:25:5125:36|Read directive translate_on.
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo_dc/rtl/lscc_fifo_dc.v&quot;:5156:29:5156:41|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/fifo_dc/rtl/lscc_fifo_dc.v&quot;:5160:29:5160:40|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mac.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mac.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/mult_accumulate/rtl/lscc_mult_accumulate.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mac.v&quot;:94:11:94:23|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mac.v&quot;:109:11:109:22|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsubsum.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsubsum.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/mult_add_sub_sum/rtl/lscc_mult_add_sub_sum.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/mult_add_sub_sum/rtl/lscc_mult_add_sub_sum.v&quot;:210:13:210:25|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/mult_add_sub_sum/rtl/lscc_mult_add_sub_sum.v&quot;:227:13:227:24|Read directive translate_on.
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsubsum.v&quot;:84:11:84:23|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsubsum.v&quot;:93:11:93:22|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsub.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsub.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/mult_add_sub/rtl/lscc_mult_add_sub.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsub.v&quot;:91:11:91:23|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_multaddsub.v&quot;:100:11:100:22|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mult.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mult.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/multiplier/rtl/lscc_multiplier.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mult.v&quot;:87:11:87:23|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_mult.v&quot;:96:11:96:22|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dp.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dp.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dp/rtl/lscc_ram_dp.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dp/rtl/lscc_ram_dp.v&quot;:1060:25:1060:37|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dp/rtl/lscc_ram_dp.v&quot;:1064:25:1064:36|Read directive translate_on.
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dp/rtl/lscc_ram_dp.v&quot;:1095:29:1095:41|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dp/rtl/lscc_ram_dp.v&quot;:1099:29:1099:40|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dq.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dq.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dq/rtl/lscc_ram_dq.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dq/rtl/lscc_ram_dq.v&quot;:1485:25:1485:37|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/ram_dq/rtl/lscc_ram_dq.v&quot;:1491:25:1491:36|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_rom.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_rom.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/rom/rtl/lscc_rom.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/rom/rtl/lscc_rom.v&quot;:970:25:970:37|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/rom/rtl/lscc_rom.v&quot;:976:25:976:36|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_sub.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_sub.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/../common/subtractor/rtl/lscc_subtractor.v&quot; (library work)
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dp_be.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dp_be.v&quot;:146:11:146:23|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dp_be.v&quot;:155:11:155:22|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dq_be.v&quot; (library work)
+@N: CG334 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dq_be.v&quot;:87:11:87:23|Read directive translate_off.
+@N: CG333 :&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_ram_dq_be.v&quot;:95:11:95:22|Read directive translate_on.
+@I:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.v&quot;:&quot;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_dsp.v&quot; (library work)
+@N|stack limit increased to max
+Verilog syntax check successful!
+
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 206MB peak: 206MB)
+
+
+Process completed successfully.
+# Sat Mar 22 21:01:16 2025
+
+###########################################################]
+###########################################################[
+Location map warning &quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map&quot;:39 - Attempted redefinition of package lfd2nx1.components
+Location map warning &quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map&quot;:43 - Attempted redefinition of package lfd2nx2.components
+Location map warning &quot;/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map&quot;:49 - Attempted redefinition of package lfmxo5t1.components
+@N|stack limit increased to max
+@N:&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:12:7:12:9|Top entity is set to top.
+File /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/math_real.vhd changed - recompiling
+File /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_logic.vhd changed - recompiling
+File /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd changed - recompiling
+File /home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd changed - recompiling
+File /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd changed - recompiling
+File /home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd changed - recompiling
+File /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd changed - recompiling
+File /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd changed - recompiling
+File /home/seb/ecam/robot/rtl/top/top.vhd changed - recompiling
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_array.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_attribute.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/lscc/radiant/2024.2/cae_library/synthesis/vhdl/iCE40UP.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_math.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_logic.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&apos;.
+@N: CD895 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:68:20:68:24|Setting attribute syn_ramstyle to &quot;no_rw_check&quot; on shared variable mem_v
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd&apos;.
+@N: CD140 :	| Using the VHDL 1993 Standard for file &apos;/home/seb/ecam/robot/rtl/top/top.vhd&apos;.
+VHDL syntax check successful!
+@N: CD630 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:12:7:12:9|Synthesizing work.top.rtl.
+@W: CD326 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:88:37:88:59|Port in_level of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:88:37:88:59|Port out_level of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:88:37:88:59|Port full of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:88:37:88:59|Port almfull of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:88:37:88:59|Port empty of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:88:37:88:59|Port almempty of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@N: CD630 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd&quot;:33:7:33:24|Synthesizing work.olo_base_fifo_sync.rtl.
+@W: CD434 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd&quot;:88:43:88:45|Signal rst in the sensitivity list is not used in the process. Make sure all variables in the sensitivity list are referenced in the process.
+@N: CD630 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:34:7:34:22|Synthesizing work.olo_base_ram_sdp.rtl.
+@W: CD246 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:125:45:125:71|Range has negative width!
+@W: CD454 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:125:16:125:40|Storing to null range (2 to 1) of variable rdpipe 
+Post processing for work.olo_base_ram_sdp.rtl
+Running optimization stage 1 on olo_base_ram_sdp .......
+@N: CL134 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:68:20:68:24|Found RAM mem_v, depth=32, width=8
+Finished optimization stage 1 on olo_base_ram_sdp (CPU Time 0h:00m:00s, Memory Used current: 186MB peak: 186MB)
+Post processing for work.olo_base_fifo_sync.rtl
+Running optimization stage 1 on olo_base_fifo_sync .......
+Finished optimization stage 1 on olo_base_fifo_sync (CPU Time 0h:00m:00s, Memory Used current: 186MB peak: 186MB)
+@N: CD630 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:33:7:33:19|Synthesizing work.olo_intf_uart.rtl.
+@N: CD233 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:65:19:65:20|Using sequential encoding for type statetx_t.
+@N: CD231 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:66:19:66:20|Using onehot encoding for type staterx_t. For example, enumeration idle_s is mapped to &quot;10000&quot;.
+@N: CD630 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd&quot;:34:7:34:19|Synthesizing work.olo_intf_sync.struct.
+Post processing for work.olo_intf_sync.struct
+Running optimization stage 1 on olo_intf_sync .......
+Finished optimization stage 1 on olo_intf_sync (CPU Time 0h:00m:00s, Memory Used current: 187MB peak: 187MB)
+@N: CD630 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd&quot;:34:7:34:25|Synthesizing work.olo_base_strobe_gen.rtl.
+Post processing for work.olo_base_strobe_gen.rtl
+Running optimization stage 1 on olo_base_strobe_gen .......
+Finished optimization stage 1 on olo_base_strobe_gen (CPU Time 0h:00m:00s, Memory Used current: 187MB peak: 187MB)
+Post processing for work.olo_intf_uart.rtl
+Running optimization stage 1 on olo_intf_uart .......
+Finished optimization stage 1 on olo_intf_uart (CPU Time 0h:00m:00s, Memory Used current: 187MB peak: 188MB)
+@N: CD630 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd&quot;:35:7:35:24|Synthesizing work.olo_base_reset_gen.struct.
+@W: CD638 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd&quot;:61:11:61:18|Signal pulsecnt is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd&quot;:62:11:62:18|Signal rstpulse is undriven. Either assign the signal a value or remove the signal declaration.
+Post processing for work.olo_base_reset_gen.struct
+Running optimization stage 1 on olo_base_reset_gen .......
+Finished optimization stage 1 on olo_base_reset_gen (CPU Time 0h:00m:00s, Memory Used current: 188MB peak: 188MB)
+Post processing for work.top.rtl
+Running optimization stage 1 on top .......
+@W: CL240 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:27:8:27:15|Signal pwm_mot2 is floating; a simulation mismatch is possible.
+@W: CL240 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:26:8:26:15|Signal pwm_mot1 is floating; a simulation mismatch is possible.
+@W: CL240 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:20:8:20:14|Signal us_trig is floating; a simulation mismatch is possible.
+Finished optimization stage 1 on top (CPU Time 0h:00m:00s, Memory Used current: 188MB peak: 188MB)
+Running optimization stage 2 on olo_base_reset_gen_work_top_rtl_0layer0 .......
+Finished optimization stage 2 on olo_base_reset_gen_work_top_rtl_0layer0 (CPU Time 0h:00m:00s, Memory Used current: 188MB peak: 188MB)
+Running optimization stage 2 on olo_base_strobe_gen_12000000.000000_460800.000000_true .......
+Finished optimization stage 2 on olo_base_strobe_gen_12000000.000000_460800.000000_true (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_intf_sync_work_top_rtl_0layer0 .......
+Finished optimization stage 2 on olo_intf_sync_work_top_rtl_0layer0 (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_intf_uart_12000000.000000_230400.000000_8_1_none .......
+@N: CL189 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:321:8:321:9|Register bit r.TxShiftReg(9) is always 0.
+@W: CL260 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:321:8:321:9|Pruning register bit 9 of r.TxShiftReg(9 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CL201 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:321:8:321:9|Trying to extract state machine for register r.StateTx.
+Extracted state machine for register r.StateTx
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+@N: CL201 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:321:8:321:9|Trying to extract state machine for register r.StateRx.
+Extracted state machine for register r.StateRx
+State machine has 4 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   10000
+Finished optimization stage 2 on olo_intf_uart_12000000.000000_230400.000000_8_1_none (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_base_ram_sdp_32_8_false_1_auto_RBW_false .......
+@N: CL159 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:48:8:48:12|Input Wr_Be is unused.
+@N: CL159 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:50:8:50:13|Input Rd_Clk is unused.
+Finished optimization stage 2 on olo_base_ram_sdp_32_8_false_1_auto_RBW_false (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_base_fifo_sync_work_top_rtl_0layer0 .......
+Finished optimization stage 2 on olo_base_fifo_sync_work_top_rtl_0layer0 (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on top .......
+@N: CL159 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:21:8:21:14|Input us_echo is unused.
+@N: CL159 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:23:8:23:12|Input quad1 is unused.
+@N: CL159 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:24:8:24:12|Input quad2 is unused.
+Finished optimization stage 2 on top (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+
+For a summary of runtime per design unit, please see file:
+==========================================================
+@L: /home/seb/ecam/robot/project/robot/impl_1/synwork/layer0.duruntime
+
+
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 185MB peak: 185MB)
+
+
+Process completed successfully.
+# Sat Mar 22 21:01:17 2025
+
+###########################################################]
+###########################################################[
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys Synopsys Netlist Linker, Version comp202309synp1, Build 364R, Built Oct  3 2024 00:20:29, @5664073
+
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 186MB peak: 186MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Mar 22 21:01:17 2025
+
+###########################################################]
+
+For a summary of runtime and memory usage for all design units, please see file:
+==========================================================
+@L: /home/seb/ecam/robot/project/robot/impl_1/synwork/robot_impl_1_comp.rt.csv
+
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 37MB peak: 37MB)
+
+Process took 0h:00m:02s realtime, 0h:00m:02s cputime
+
+Process completed successfully.
+# Sat Mar 22 21:01:17 2025
+
+###########################################################]
+###########################################################[
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys Synopsys Netlist Linker, Version comp202309synp1, Build 364R, Built Oct  3 2024 00:20:29, @5664073
+
+@N|Running in 64-bit mode
+File /home/seb/ecam/robot/project/robot/impl_1/synwork/robot_impl_1_comp.srs changed - recompiling
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 187MB peak: 187MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sat Mar 22 21:01:18 2025
+
+###########################################################]
+# Sat Mar 22 21:01:18 2025
+
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys Lattice Technology Pre-mapping, Version map202309lat, Build 228R, Built Nov  4 2024 07:34:08, @5717143
+
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 501MB peak: 501MB)
+
+
+Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 515MB peak: 516MB)
+
+Reading constraint file: /home/seb/lscc/radiant/2024.2/scripts/tcl/flow/radiant_synplify_vars.tcl
+Reading constraint file: /home/seb/ecam/robot/project/robot/timing.sdc
+@L: /home/seb/ecam/robot/project/robot/impl_1/robot_impl_1_scck.rpt 
+See clock summary report &quot;/home/seb/ecam/robot/project/robot/impl_1/robot_impl_1_scck.rpt&quot;
+@N: MF916 |Option synthesis_strategy=base is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled. (Command &quot;set_option -fix_gated_and_generated_clocks 0&quot; in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+NConnInternalConnection caching is on
+@W: FX1172 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd&quot;:100:12:100:13|User-specified initial value defined for instance reset_gen_inst.DsSync[1:0] is being ignored due to limitations in architecture. 
+@W: FX1172 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd&quot;:82:8:82:9|User-specified initial value defined for instance reset_gen_inst.RstSyncChain[2:0] is being ignored due to limitations in architecture. 
+@W: FX1172 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd&quot;:92:8:92:9|User-specified initial value defined for instance uart_inst.i_sync.RegN_0[0] is being ignored due to limitations in architecture. 
+@W: FX1172 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd&quot;:92:8:92:9|User-specified initial value defined for instance uart_inst.i_sync.Reg0[0] is being ignored due to limitations in architecture. 
+@W: FX1172 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:106:8:106:9|User-specified initial value defined for instance counter[23:0] is being ignored due to limitations in architecture. 
+
+Starting HSTDM IP insertion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished HSTDM IP insertion (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Started DisTri Cleanup (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished DisTri Cleanup (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+@N: BN362 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:321:8:321:9|Removing sequential instance r\.Rx_ParityError (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl)) of type view:PrimLib.sdffre(prim) because it does not drive other instances.
+Encoding state machine r\.StateRx[0:3] (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl))
+original code -&gt; new code
+   00001 -&gt; 00
+   00010 -&gt; 01
+   00100 -&gt; 10
+   10000 -&gt; 11
+@N: MO225 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:321:8:321:9|There are no possible illegal states for state machine r\.StateRx[0:3] (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl)); safe FSM implementation is not required.
+Encoding state machine r\.StateTx[0:3] (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl))
+original code -&gt; new code
+   00 -&gt; 00
+   01 -&gt; 01
+   10 -&gt; 10
+   11 -&gt; 11
+@N: MO225 :&quot;/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd&quot;:321:8:321:9|There are no possible illegal states for state machine r\.StateTx[0:3] (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl)); safe FSM implementation is not required.
+
+Starting clock optimization report phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished clock optimization report phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+@N: FX1184 |Applying syn_allowed_resources blockrams=30 on top level netlist top 
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+
+Clock Summary
+******************
+
+          Start        Requested     Requested     Clock        Clock                Clock
+Level     Clock        Frequency     Period        Type         Group                Load 
+------------------------------------------------------------------------------------------
+0 -       main_clk     12.0 MHz      83.333        declared     default_clkgroup     134  
+==========================================================================================
+
+
+
+Clock Load Summary
+***********************
+
+             Clock     Source        Clock Pin           Non-clock Pin     Non-clock Pin
+Clock        Load      Pin           Seq Example         Seq Example       Comb Example 
+----------------------------------------------------------------------------------------
+main_clk     134       clk(port)     counter[23:0].C     -                 -            
+========================================================================================
+
+ICG Latch Removal Summary:
+Number of ICG latches removed: 0
+Number of ICG latches not removed:	0
+
+
+@S |Clock Optimization Summary
+
+
+
+#### START OF PREMAP CLOCK OPTIMIZATION REPORT #####[
+
+1 non-gated/non-generated clock tree(s) driving 127 clock pin(s) of sequential element(s)
+0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+
+=========================== Non-Gated/Non-Generated Clocks ============================
+Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance
+---------------------------------------------------------------------------------------
+@KP:ckid0_0       clk                 port                   127        counter[23:0]  
+=======================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######
+
+@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file /home/seb/ecam/robot/project/robot/impl_1/robot_impl_1.sap.
+
+Starting constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished constraint checker preprocessing (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished constraint checker (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 471MB peak: 559MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sat Mar 22 21:01:19 2025
+
+###########################################################]
+Map &amp; Optimize Report
+
+# Sat Mar 22 21:01:19 2025
+
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys Lattice Technology Mapper, Version map202309lat, Build 228R, Built Nov  4 2024 07:34:08, @5717143
+
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 501MB peak: 501MB)
+
+@N: MF916 |Option synthesis_strategy=base is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled. (Command &quot;set_option -fix_gated_and_generated_clocks 0&quot; in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 514MB peak: 516MB)
+
+
+
+Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 557MB peak: 557MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 558MB peak: 558MB)
+
+@W: FX344 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:68:20:68:24|Unrecognized syn_ramstyle &quot;auto&quot; on instance olo_base_fifo_sync_inst.i_ram.mem_v[7:0] 
+@N: FX403 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:68:20:68:24|Property &quot;block_ram&quot; or &quot;no_rw_check&quot; found for RAM olo_base_fifo_sync_inst.i_ram.mem_v[7:0] with specified coding style. Inferring block RAM.
+@W: FX107 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:68:20:68:24|RAM olo_base_fifo_sync_inst.i_ram.mem_v[7:0] (in view: work.top(rtl)) does not have a read/write conflict check. Possible simulation mismatch. To resolve a read/write conflict, either set syn_ramstyle = rw_check, or enable the &quot;Read Write Check on RAM&quot; Implementation Option. For more information, search for &quot;read/write conflict check&quot; in Online Help.
+@N: FX702 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd&quot;:68:20:68:24|Found startup values on RAM instance olo_base_fifo_sync_inst.i_ram.mem_v[7:0]
+@N: MO231 :&quot;/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd&quot;:174:8:174:9|Found counter in view:work.top(rtl) instance olo_base_fifo_sync_inst.r\.WrAddr[4:0] 
+@N: MO231 :&quot;/home/seb/ecam/robot/rtl/top/top.vhd&quot;:106:8:106:9|Found counter in view:work.top(rtl) instance counter[23:0] 
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 558MB peak: 558MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 558MB peak: 558MB)
+
+NConnInternalConnection caching is on
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 559MB peak: 559MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:00s		    65.36ns		 161 /       114
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:01s; Memory used current: 560MB peak: 560MB)
+
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:01s; Memory used current: 560MB peak: 560MB)
+
+
+Starting CDBProcessSetClockGroups... (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:01s; Memory used current: 560MB peak: 560MB)
+
+
+Finished with CDBProcessSetClockGroups (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:01s; Memory used current: 560MB peak: 560MB)
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 560MB peak: 560MB)
+
+Writing Analyst data base /home/seb/ecam/robot/project/robot/impl_1/synwork/robot_impl_1_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 560MB peak: 560MB)
+
+Writing Verilog Simulation files
+
+Writing scf file... (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 561MB peak: 561MB)
+
+@N: BW103 |The default time unit for the Synopsys Constraint File (SDC or FDC) is 1ns.
+@N: BW107 |Synopsys Constraint File capacitance units using default value of 1pF 
+
+Finished Writing Verilog Simulation files (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 561MB peak: 561MB)
+
+
+Finished Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 561MB peak: 561MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 561MB peak: 561MB)
+
+@N: MT615 |Found clock main_clk with period 83.33ns 
+
+
+##### START OF TIMING REPORT #####[
+# Timing report written on Sat Mar 22 21:01:21 2025
+#
+
+
+Top view:               top
+Requested Frequency:    12.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    /home/seb/lscc/radiant/2024.2/scripts/tcl/flow/radiant_synplify_vars.tcl
+                       /home/seb/ecam/robot/project/robot/timing.sdc
+                       
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: -6.463
+
+                   Requested     Estimated     Requested     Estimated                Clock        Clock           
+Starting Clock     Frequency     Frequency     Period        Period        Slack      Type         Group           
+-------------------------------------------------------------------------------------------------------------------
+main_clk           12.0 MHz      NA            83.333        NA            NA         declared     default_clkgroup
+System             200.0 MHz     87.2 MHz      5.000         11.463        -6.463     system       system_clkgroup 
+===================================================================================================================
+Estimated period and frequency reported as NA means no slack depends directly on the clock waveform
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise    |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+---------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack   |  constraint  slack  |  constraint  slack  |  constraint  slack
+---------------------------------------------------------------------------------------------------------
+System    System  |  5.000       -6.464  |  No paths    -      |  No paths    -      |  No paths    -    
+=========================================================================================================
+ Note: &apos;No paths&apos; indicates there are no paths in the design for that pair of clock edges.
+       &apos;Diff grp&apos; indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: System
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                                          Starting                                         Arrival           
+Instance                                  Reference     Type        Pin     Net            Time        Slack 
+                                          Clock                                                              
+-------------------------------------------------------------------------------------------------------------
+olo_base_fifo_sync_inst.r\.RdLevel[1]     System        FD1P3IZ     Q       RdLevel[1]     0.796       -6.463
+olo_base_fifo_sync_inst.r\.RdLevel[2]     System        FD1P3IZ     Q       RdLevel[2]     0.796       -6.433
+olo_base_fifo_sync_inst.r\.RdLevel[3]     System        FD1P3IZ     Q       RdLevel[3]     0.796       -6.391
+olo_base_fifo_sync_inst.r\.RdLevel[4]     System        FD1P3IZ     Q       RdLevel[4]     0.796       -6.298
+uart_inst.i_strb_tx.Out_Valid             System        FD1P3IZ     Q       TxStrobe       0.796       -5.723
+uart_inst.r\.StateTx[1]                   System        FD1P3DZ     Q       StateTx[1]     0.796       -5.651
+uart_inst.r\.TxCount[3]                   System        FD1P3DZ     Q       TxCount[3]     0.796       -5.651
+uart_inst.r\.TxCount[2]                   System        FD1P3DZ     Q       TxCount[2]     0.796       -5.578
+uart_inst.i_strb_tx.Count[3]              System        FD1P3IZ     Q       Count[3]       0.796       -5.547
+uart_inst.i_strb_rx.Count[3]              System        FD1P3IZ     Q       Count[3]       0.796       -5.547
+=============================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                                         Starting                                          Required           
+Instance                                 Reference     Type        Pin     Net             Time         Slack 
+                                         Clock                                                                
+--------------------------------------------------------------------------------------------------------------
+olo_base_fifo_sync_inst.r\.RdAddr[3]     System        FD1P3DZ     D       RdAddr          4.845        -6.463
+olo_base_fifo_sync_inst.r\.RdAddr[4]     System        FD1P3DZ     D       RdAddr_3        4.845        -6.463
+olo_base_fifo_sync_inst.r\.RdAddr[1]     System        FD1P3DZ     D       RdAddr_1        4.845        -6.171
+olo_base_fifo_sync_inst.r\.RdAddr[2]     System        FD1P3DZ     D       RdAddr_0        4.845        -6.171
+olo_base_fifo_sync_inst.r\.RdAddr[0]     System        FD1P3DZ     D       RdAddr_2        4.845        -5.800
+uart_inst.r\.Tx_Ready                    System        FD1P3IZ     D       Tx_Ready_0      4.845        -5.723
+uart_inst.i_strb_tx.Out_Valid            System        FD1P3IZ     D       Out_Valid       4.845        -5.547
+uart_inst.i_strb_rx.Out_Valid            System        FD1P3IZ     D       Out_Valid       4.845        -5.547
+uart_inst.i_strb_tx.Count[11]            System        FD1P3IZ     D       Count_5[11]     4.845        -5.352
+uart_inst.i_strb_rx.Count[11]            System        FD1P3IZ     D       Count_5[11]     4.845        -5.352
+==============================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+      Requested Period:                      5.000
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    + Estimated clock delay at ending point: 0.000
+    = Required time:                         4.845
+
+    - Propagation time:                      11.309
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (critical) :                     -6.464
+
+    Number of logic level(s):                7
+    Starting point:                          olo_base_fifo_sync_inst.r\.RdLevel[1] / Q
+    Ending point:                            olo_base_fifo_sync_inst.r\.RdAddr[4] / D
+    The start point is clocked by            System [rising] on pin CK
+    The end   point is clocked by            System [rising] on pin CK
+
+Instance / Net                                                  Pin      Pin               Arrival      No. of    
+Name                                                Type        Name     Dir     Delay     Time         Fan Out(s)
+------------------------------------------------------------------------------------------------------------------
+olo_base_fifo_sync_inst.r\.RdLevel[1]               FD1P3IZ     Q        Out     0.796     0.796 f      -         
+RdLevel[1]                                          Net         -        -       1.599     -            3         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        A        In      -         2.395 f      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        Z        Out     0.661     3.056 r      -         
+out_valid2lto5_3                                    Net         -        -       1.371     -            2         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        D        In      -         4.427 r      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        Z        Out     0.424     4.851 f      -         
+rdaddr7                                             Net         -        -       1.371     -            9         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        B        In      -         6.222 f      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        Z        Out     0.558     6.780 f      -         
+N_159                                               Net         -        -       0.905     -            2         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      B0       In      -         7.685 f      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      COUT     Out     0.358     8.043 r      -         
+RdAddr_cry_0                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      CIN      In      -         8.057 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      COUT     Out     0.278     8.335 r      -         
+RdAddr_cry_2                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      CIN      In      -         8.349 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      S1       Out     0.477     8.826 r      -         
+RdAddr_4[4]                                         Net         -        -       0.386     -            2         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[4]            LUT4        B        In      -         9.212 r      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[4]            LUT4        Z        Out     0.589     9.802 r      -         
+RdAddr_3                                            Net         -        -       1.507     -            1         
+olo_base_fifo_sync_inst.r\.RdAddr[4]                FD1P3DZ     D        In      -         11.309 r     -         
+==================================================================================================================
+Total path delay (propagation time + setup) of 11.463 is 4.297(37.5%) logic and 7.167(62.5%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 2: 
+      Requested Period:                      5.000
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    + Estimated clock delay at ending point: 0.000
+    = Required time:                         4.845
+
+    - Propagation time:                      11.309
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (critical) :                     -6.464
+
+    Number of logic level(s):                7
+    Starting point:                          olo_base_fifo_sync_inst.r\.RdLevel[1] / Q
+    Ending point:                            olo_base_fifo_sync_inst.r\.RdAddr[4] / D
+    The start point is clocked by            System [rising] on pin CK
+    The end   point is clocked by            System [rising] on pin CK
+
+Instance / Net                                                  Pin      Pin               Arrival      No. of    
+Name                                                Type        Name     Dir     Delay     Time         Fan Out(s)
+------------------------------------------------------------------------------------------------------------------
+olo_base_fifo_sync_inst.r\.RdLevel[1]               FD1P3IZ     Q        Out     0.796     0.796 f      -         
+RdLevel[1]                                          Net         -        -       1.599     -            3         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        A        In      -         2.395 f      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        Z        Out     0.661     3.056 r      -         
+out_valid2lto5_3                                    Net         -        -       1.371     -            2         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        D        In      -         4.427 r      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        Z        Out     0.424     4.851 f      -         
+rdaddr7                                             Net         -        -       1.371     -            9         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        B        In      -         6.222 f      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        Z        Out     0.558     6.780 f      -         
+N_159                                               Net         -        -       0.905     -            2         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      C0       In      -         7.685 f      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      COUT     Out     0.358     8.043 r      -         
+RdAddr_cry_0                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      CIN      In      -         8.057 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      COUT     Out     0.278     8.335 r      -         
+RdAddr_cry_2                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      CIN      In      -         8.349 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      S1       Out     0.477     8.826 r      -         
+RdAddr_4[4]                                         Net         -        -       0.386     -            2         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[4]            LUT4        B        In      -         9.212 r      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[4]            LUT4        Z        Out     0.589     9.802 r      -         
+RdAddr_3                                            Net         -        -       1.507     -            1         
+olo_base_fifo_sync_inst.r\.RdAddr[4]                FD1P3DZ     D        In      -         11.309 r     -         
+==================================================================================================================
+Total path delay (propagation time + setup) of 11.463 is 4.297(37.5%) logic and 7.167(62.5%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 3: 
+      Requested Period:                      5.000
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    + Estimated clock delay at ending point: 0.000
+    = Required time:                         4.845
+
+    - Propagation time:                      11.309
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (critical) :                     -6.464
+
+    Number of logic level(s):                7
+    Starting point:                          olo_base_fifo_sync_inst.r\.RdLevel[1] / Q
+    Ending point:                            olo_base_fifo_sync_inst.r\.RdAddr[3] / D
+    The start point is clocked by            System [rising] on pin CK
+    The end   point is clocked by            System [rising] on pin CK
+
+Instance / Net                                                  Pin      Pin               Arrival      No. of    
+Name                                                Type        Name     Dir     Delay     Time         Fan Out(s)
+------------------------------------------------------------------------------------------------------------------
+olo_base_fifo_sync_inst.r\.RdLevel[1]               FD1P3IZ     Q        Out     0.796     0.796 f      -         
+RdLevel[1]                                          Net         -        -       1.599     -            3         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        A        In      -         2.395 f      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        Z        Out     0.661     3.056 r      -         
+out_valid2lto5_3                                    Net         -        -       1.371     -            2         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        D        In      -         4.427 r      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        Z        Out     0.424     4.851 f      -         
+rdaddr7                                             Net         -        -       1.371     -            9         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        B        In      -         6.222 f      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        Z        Out     0.558     6.780 f      -         
+N_159                                               Net         -        -       0.905     -            2         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      B0       In      -         7.685 f      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      COUT     Out     0.358     8.043 r      -         
+RdAddr_cry_0                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      CIN      In      -         8.057 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      COUT     Out     0.278     8.335 r      -         
+RdAddr_cry_2                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      CIN      In      -         8.349 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      S0       Out     0.477     8.826 r      -         
+RdAddr_4[3]                                         Net         -        -       0.386     -            2         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[3]            LUT4        B        In      -         9.212 r      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[3]            LUT4        Z        Out     0.589     9.802 r      -         
+RdAddr                                              Net         -        -       1.507     -            1         
+olo_base_fifo_sync_inst.r\.RdAddr[3]                FD1P3DZ     D        In      -         11.309 r     -         
+==================================================================================================================
+Total path delay (propagation time + setup) of 11.463 is 4.297(37.5%) logic and 7.167(62.5%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 4: 
+      Requested Period:                      5.000
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    + Estimated clock delay at ending point: 0.000
+    = Required time:                         4.845
+
+    - Propagation time:                      11.309
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (critical) :                     -6.464
+
+    Number of logic level(s):                7
+    Starting point:                          olo_base_fifo_sync_inst.r\.RdLevel[1] / Q
+    Ending point:                            olo_base_fifo_sync_inst.r\.RdAddr[3] / D
+    The start point is clocked by            System [rising] on pin CK
+    The end   point is clocked by            System [rising] on pin CK
+
+Instance / Net                                                  Pin      Pin               Arrival      No. of    
+Name                                                Type        Name     Dir     Delay     Time         Fan Out(s)
+------------------------------------------------------------------------------------------------------------------
+olo_base_fifo_sync_inst.r\.RdLevel[1]               FD1P3IZ     Q        Out     0.796     0.796 f      -         
+RdLevel[1]                                          Net         -        -       1.599     -            3         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        A        In      -         2.395 f      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        Z        Out     0.661     3.056 r      -         
+out_valid2lto5_3                                    Net         -        -       1.371     -            2         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        D        In      -         4.427 r      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        Z        Out     0.424     4.851 f      -         
+rdaddr7                                             Net         -        -       1.371     -            9         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        B        In      -         6.222 f      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        Z        Out     0.558     6.780 f      -         
+N_159                                               Net         -        -       0.905     -            2         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      C0       In      -         7.685 f      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      COUT     Out     0.358     8.043 r      -         
+RdAddr_cry_0                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      CIN      In      -         8.057 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      COUT     Out     0.278     8.335 r      -         
+RdAddr_cry_2                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      CIN      In      -         8.349 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      S0       Out     0.477     8.826 r      -         
+RdAddr_4[3]                                         Net         -        -       0.386     -            2         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[3]            LUT4        B        In      -         9.212 r      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[3]            LUT4        Z        Out     0.589     9.802 r      -         
+RdAddr                                              Net         -        -       1.507     -            1         
+olo_base_fifo_sync_inst.r\.RdAddr[3]                FD1P3DZ     D        In      -         11.309 r     -         
+==================================================================================================================
+Total path delay (propagation time + setup) of 11.463 is 4.297(37.5%) logic and 7.167(62.5%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+Path information for path number 5: 
+      Requested Period:                      5.000
+    - Setup time:                            0.155
+    + Clock delay at ending point:           0.000 (ideal)
+    + Estimated clock delay at ending point: 0.000
+    = Required time:                         4.845
+
+    - Propagation time:                      11.277
+    - Clock delay at starting point:         0.000 (ideal)
+    - Estimated clock delay at start point:  -0.000
+    = Slack (non-critical) :                 -6.433
+
+    Number of logic level(s):                7
+    Starting point:                          olo_base_fifo_sync_inst.r\.RdLevel[2] / Q
+    Ending point:                            olo_base_fifo_sync_inst.r\.RdAddr[4] / D
+    The start point is clocked by            System [rising] on pin CK
+    The end   point is clocked by            System [rising] on pin CK
+
+Instance / Net                                                  Pin      Pin               Arrival      No. of    
+Name                                                Type        Name     Dir     Delay     Time         Fan Out(s)
+------------------------------------------------------------------------------------------------------------------
+olo_base_fifo_sync_inst.r\.RdLevel[2]               FD1P3IZ     Q        Out     0.796     0.796 r      -         
+RdLevel[2]                                          Net         -        -       1.599     -            3         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        B        In      -         2.395 r      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIQ6O85[1]      LUT4        Z        Out     0.558     2.953 f      -         
+out_valid2lto5_3                                    Net         -        -       1.371     -            2         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        D        In      -         4.324 f      -         
+olo_base_fifo_sync_inst.r\.RdLevel_RNIEELHD[5]      LUT4        Z        Out     0.465     4.789 r      -         
+rdaddr7                                             Net         -        -       1.371     -            9         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        B        In      -         6.160 r      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNIRKJ2Q_0[0]     LUT4        Z        Out     0.589     6.749 r      -         
+N_159                                               Net         -        -       0.905     -            2         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      B0       In      -         7.654 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_0_c_0     CCU2_B      COUT     Out     0.358     8.012 r      -         
+RdAddr_cry_0                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      CIN      In      -         8.026 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_1_c_0     CCU2_B      COUT     Out     0.278     8.304 r      -         
+RdAddr_cry_2                                        Net         -        -       0.014     -            1         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      CIN      In      -         8.318 r      -         
+olo_base_fifo_sync_inst.un1_r\.RdAddr_cry_3_c_0     CCU2_B      S1       Out     0.477     8.795 r      -         
+RdAddr_4[4]                                         Net         -        -       0.386     -            2         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[4]            LUT4        B        In      -         9.181 r      -         
+olo_base_fifo_sync_inst.r\.RdAddr_RNO[4]            LUT4        Z        Out     0.589     9.771 r      -         
+RdAddr_3                                            Net         -        -       1.507     -            1         
+olo_base_fifo_sync_inst.r\.RdAddr[4]                FD1P3DZ     D        In      -         11.277 r     -         
+==================================================================================================================
+Total path delay (propagation time + setup) of 11.433 is 4.266(37.3%) logic and 7.167(62.7%) route.
+Path delay compensated for clock skew. Clock skew is added to clock-to-out value, and is subtracted from setup time value
+
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+
+Finished final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 561MB peak: 561MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 561MB peak: 561MB)
+
+---------------------------------------
+Resource Usage Report for top 
+
+Mapping to part: ice40up5ksg48i-6
+Cell usage:
+CCU2_B          45 uses
+FD1P3BZ         3 uses
+FD1P3DZ         70 uses
+FD1P3IZ         41 uses
+INV             2 uses
+PDP4K           1 use
+VHI             8 uses
+VLO             8 uses
+LUT4            102 uses
+
+I/O ports: 17
+I/O primitives: 12
+IB             3 uses
+OB             6 uses
+OBZ_B          3 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   114 of 5280 (2%)
+
+RAM/ROM usage summary
+Block Rams : 1 of 30 (3%)
+
+Total load per clock:
+   main_clk: 1
+
+@S |Mapping Summary:
+Total  LUTs: 102 (1%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed LUTs 102 = 102 
+
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 472MB peak: 561MB)
+
+Process took 0h:00m:02s realtime, 0h:00m:02s cputime
+# Sat Mar 22 21:01:22 2025
+
+###########################################################]
+
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</PRE></DIV>
+
+<button id="back_to_top" class="radiant" onclick="scrollToTop()">&lt;</button>
+<script type="text/javascript">
+<!--
+var scrollStep = 0;
+function scrollToTop(){
+  var funScroll = function() {
+    var top = document.body.scrollTop;
+    if (top == 0) {
+      scrollStep = 0;
+      return;
+    }
+    if (scrollStep == 0)
+      scrollStep = top/20 + 1;
+    top -= scrollStep;
+    if (top < 0)
+      top = 0;
+    document.body.scrollTop = top;
+    requestAnimationFrame(funScroll);
+  };
+  funScroll();
+}
+
+window.addEventListener('scroll', function(e) {
+  var backToTop = document.getElementById('back_to_top')
+  if (document.body.scrollTop > 0) {
+    backToTop.style.display = 'block';
+  } else {	backToTop.style.display = 'none'  }});
+
+//-->
+</script>
+
+<style type="text/css">
+#back_to_top {
+  bottom:20px; right:20px;
+  width:30px; height:30px;
+  font-size: 20px;
+  padding: 2px 5px 2px 5px;
+  position:fixed;
+  background-color:rgba(210,210,210,0.1);
+  border-style: solid;
+  border-color: rgba(192,192,192,0.8);
+  border-width:1px;
+  display:none;
+  -webkit-transform: rotate(90deg);
+  -webkit-transform-origin:50% 50%;
+}
+#back_to_top:focus {
+  outline-width:0px;
+}
+</style>
+
+</BODY>
+

@@ -1,0 +1,87 @@
+#defaultlanguage:vhdl
+#OPTIONS:"|-top|top|-prodtype|synplify_pro|-primux|-fixsmult|-infer_seqShift|-sdff_counter|-nram|-divnmod|-nostructver|-lattice|-ice|-encrypt|-pro|-lite|-ui|-fid2|-ram|-sharing|on|-ll|2000|-autosm|-work_is_curlib|0|-ignore_undefined_lib|-lib|pmi|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work|-fileorder|/home/seb/ecam/robot/project/robot/impl_1/syntmp/hdlorder.tcl"
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/linux_a_64/c_vhdl":1727970012
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map":1730933364
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/std.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/snps_haps_pkg.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/std1164.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/numeric.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/umr_capim.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/arith.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/unsigned.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/hyperents.vhd":1727970007
+#CUR:"/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.vhd":1648513758
+#CUR:"/home/seb/ecam/robot/rtl/top/top.vhd":1742669972
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_array.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_attribute.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_logic.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_math.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd":1742656410
+#CUR:"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd":1742656410
+#CUR:"/home/seb/lscc/radiant/2024.2/cae_library/synthesis/vhdl/iCE40UP.vhd":1534865697
+0 "/home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.vhd" vhdl
+1 "/home/seb/ecam/robot/rtl/top/top.vhd" vhdl
+2 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_array.vhd" vhdl
+3 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_attribute.vhd" vhdl
+4 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_logic.vhd" vhdl
+5 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_math.vhd" vhdl
+6 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd" vhdl
+7 "/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd" vhdl
+8 "/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd" vhdl
+9 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd" vhdl
+10 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd" vhdl
+11 "/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd" vhdl
+12 "/home/seb/lscc/radiant/2024.2/cae_library/synthesis/vhdl/iCE40UP.vhd" vhdl
+
+# Dependency Lists (Uses list)
+0 -1
+1 6 7 10 
+2 -1
+3 -1
+4 5 
+5 2 
+6 5 3 
+7 9 8 5 4 
+8 3 
+9 5 
+10 11 5 
+11 5 3 
+12 -1
+
+# Dependency Lists (Users Of)
+0 -1
+1 -1
+2 5 
+3 11 8 6 
+4 7 
+5 11 10 9 7 6 4 
+6 1 
+7 1 
+8 7 
+9 7 
+10 1 
+11 10 
+12 -1
+
+# Design Unit to File Association
+arch work top rtl 1
+module work top 1
+arch work olo_base_reset_gen struct 6
+module work olo_base_reset_gen 6
+arch work olo_intf_uart rtl 7
+module work olo_intf_uart 7
+arch work olo_intf_sync struct 8
+module work olo_intf_sync 8
+arch work olo_base_strobe_gen rtl 9
+module work olo_base_strobe_gen 9
+arch work olo_base_fifo_sync rtl 10
+module work olo_base_fifo_sync 10
+arch work olo_base_ram_sdp rtl 11
+module work olo_base_ram_sdp 11
+
+#identified top module
+top_module top

@@ -1,0 +1,5 @@
+@W: FX1172 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd":100:12:100:13|User-specified initial value defined for instance reset_gen_inst.DsSync[1:0] is being ignored due to limitations in architecture. 
+@W: FX1172 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd":82:8:82:9|User-specified initial value defined for instance reset_gen_inst.RstSyncChain[2:0] is being ignored due to limitations in architecture. 
+@W: FX1172 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd":92:8:92:9|User-specified initial value defined for instance uart_inst.i_sync.RegN_0[0] is being ignored due to limitations in architecture. 
+@W: FX1172 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd":92:8:92:9|User-specified initial value defined for instance uart_inst.i_sync.Reg0[0] is being ignored due to limitations in architecture. 
+@W: FX1172 :"/home/seb/ecam/robot/rtl/top/top.vhd":106:8:106:9|User-specified initial value defined for instance counter[23:0] is being ignored due to limitations in architecture. 

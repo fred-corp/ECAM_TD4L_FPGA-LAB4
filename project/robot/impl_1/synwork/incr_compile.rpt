@@ -1,0 +1,70 @@
+
+Copyright (C) 1994-2023 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: V-2023.09LR-2
+Install: /home/seb/lscc/radiant/2024.2/synpbase
+OS: Fedora Linux 41 (Workstation Edition)
+Hostname: sebsky-dev-laptop
+max virtual memory: unlimited (bytes)
+max user processes: 79037
+max stack size: 8388608 (bytes)
+
+
+Implementation : impl_1
+Synopsys HDL compiler and linker, Version comp202309synp1, Build 364R, Built Oct  3 2024 00:20:29, @5664073
+
+Modified Files: 0
+FID:  path (prevtimestamp, timestamp)
+
+*******************************************************************
+Modules that may have changed as a result of file changes: 0
+MID:  lib.cell.view
+
+*******************************************************************
+Unmodified files: 23
+FID:  path (timestamp)
+23       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd (2025-03-22 16:13:30)
+24       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_array.vhd (2025-03-22 16:13:30)
+25       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_attribute.vhd (2025-03-22 16:13:30)
+26       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_logic.vhd (2025-03-22 16:13:30)
+27       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_pkg_math.vhd (2025-03-22 16:13:30)
+28       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd (2025-03-22 16:13:30)
+29       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd (2025-03-22 16:13:30)
+30       /home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd (2025-03-22 16:13:30)
+31       /home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd (2025-03-22 16:13:30)
+32       /home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd (2025-03-22 16:13:30)
+33       /home/seb/ecam/robot/rtl/top/top.vhd (2025-03-22 19:59:32)
+9        /home/seb/lscc/radiant/2024.2/cae_library/synthesis/vhdl/iCE40UP.vhd (2018-08-21 17:34:57)
+10       /home/seb/lscc/radiant/2024.2/ip/pmi/pmi_iCE40UP.vhd (2022-03-29 02:29:18)
+11       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/arith.vhd (2024-10-03 17:40:07)
+12       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/hyperents.vhd (2024-10-03 17:40:07)
+13       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/location.map (2024-11-06 23:49:24)
+14       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/math_real.vhd (2024-10-03 17:40:07)
+15       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/numeric.vhd (2024-10-03 17:40:07)
+16       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/snps_haps_pkg.vhd (2024-10-03 17:40:07)
+17       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/std.vhd (2024-10-03 17:40:07)
+18       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/std1164.vhd (2024-10-03 17:40:07)
+19       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/umr_capim.vhd (2024-10-03 17:40:07)
+20       /home/seb/lscc/radiant/2024.2/synpbase/lib/vhd/unsigned.vhd (2024-10-03 17:40:07)
+
+*******************************************************************
+Unchanged modules: 14
+MID:  lib.cell.view
+10       work.olo_base_fifo_sync.rtl
+11       work.olo_base_fifo_sync.vhdl
+12       work.olo_base_ram_sdp.rtl
+13       work.olo_base_ram_sdp.vhdl
+0        work.olo_base_reset_gen.struct
+1        work.olo_base_reset_gen.vhdl
+2        work.olo_base_strobe_gen.rtl
+3        work.olo_base_strobe_gen.vhdl
+4        work.olo_intf_sync.struct
+5        work.olo_intf_sync.vhdl
+6        work.olo_intf_uart.rtl
+7        work.olo_intf_uart.vhdl
+8        work.top.rtl
+9        work.top.vhdl

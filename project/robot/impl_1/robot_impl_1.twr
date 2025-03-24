@@ -1,0 +1,1497 @@
+Lattice Timing Report -  Setup  and Hold, Version Radiant Software (64-bit) 2024.2.0.3.0
+
+Sat Mar 22 21:01:54 2025
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
+
+Command line:    timing -sethld -v 10 -u 10 -endpoints 10 -nperend 1 -sp High-Performance_1.2V -hsp m -pwrprd -html -rpt robot_impl_1.twr robot_impl_1.udb -gui -msgset /home/seb/ecam/robot/project/robot/promote.xml
+
+-----------------------------------------
+Design:          top
+Family:          iCE40UP
+Device:          iCE40UP5K
+Package:         SG48
+Performance:     High-Performance_1.2V
+Package Status:                     Preliminary    Version 1.5
+**Performance Hardware Data Status :   Advanced Version 1.0
+-----------------------------------------
+
+
+=====================================================================
+                    Table of Contents
+=====================================================================
+    1  Timing Overview
+        1.1  SDC Constraints
+        1.2  Constraint Coverage
+        1.3  Overall Summary
+        1.4  Unconstrained Report
+        1.5  Combinational Loop
+    2  Setup at Speed Grade High-Performance_1.2V Corner at 100 Degrees
+        2.1  Clock Summary
+        2.2  Endpoint slacks
+        2.3  Detailed Report
+    3  Hold at Speed Grade m Corner at -40 Degrees
+        3.1  Endpoint slacks
+        3.2  Detailed Report
+
+=====================================================================
+                    End of Table of Contents
+=====================================================================
+
+==============================================
+1  Timing Overview
+==============================================
+
+1.1  SDC Constraints
+=====================
+create_clock -name {main_clk} -period 83.333 -waveform {0.000 41.667} [get_ports clk]
+set_false_path -from [get_ports rstn]
+set_false_path -to [get_ports {uart_txd led_r led_g led_b}]
+set_false_path -from [get_ports uart_rxd]
+
+1.2  Constraint Coverage
+---------------------------
+Constraint Coverage: 100%
+
+
+1.3  Overall Summary
+---------------------------
+ Setup at Speed Grade High-Performance_1.2V Corner at 100 Degrees     Timing Errors: 0 endpoints;  Total Negative Slack: 0.000 ns 
+ Hold at Speed Grade m Corner at -40 Degrees                          Timing Errors: 0 endpoints;  Total Negative Slack: 0.000 ns 
+
+1.4  Unconstrained Report
+===========================
+
+1.4.1  Unconstrained Start/End Points
+--------------------------------------
+
+Clocked but unconstrained timing start points
+--------------------------------------------------
+There is no start point satisfying reporting criteria
+
+
+Clocked but unconstrained timing end points
+--------------------------------------------------
+There is no end point satisfying reporting criteria
+
+
+1.4.2  Start/End Points Without Timing Constraints
+---------------------------------------------------
+
+I/O ports without constraint
+----------------------------
+Possible constraints to use on I/O ports are:
+set_input_delay,
+set_output_delay,
+set_max_delay,
+create_clock,
+create_generated_clock,
+...
+
+-------------------------------------------------------------------
+     Listing 5 Start or End Points      |           Type           
+-------------------------------------------------------------------
+us_echo                                 |                     input
+quad1[1]                                |                     input
+quad1[0]                                |                     input
+quad2[1]                                |                     input
+quad2[0]                                |                     input
+-------------------------------------------------------------------
+                                        |                          
+Number of I/O ports without constraint  |                         5
+                                        |                          
+-------------------------------------------------------------------
+
+Nets without clock definition
+Define a clock on a top level port or a generated clock on a clock divider pin associated with this net(s).
+--------------------------------------------------
+There is no instance satisfying reporting criteria
+
+
+
+1.5  Combinational Loop
+========================
+None
+
+===============================================================
+2  Setup at Speed Grade High-Performance_1.2V Corner at 100 Degrees
+===============================================================
+
+2.1  Clock Summary
+=======================
+
+2.1.1 Clock "main_clk"
+=======================
+create_clock -name {main_clk} -period 83.333 -waveform {0.000 41.667} [get_ports clk]
+
+Single Clock Domain
+-------------------------------------------------------------------------------------------------------
+             Clock main_clk             |                    |       Period       |     Frequency      
+-------------------------------------------------------------------------------------------------------
+ From main_clk                          |             Target |          83.333 ns |         12.000 MHz 
+                                        | Actual (all paths) |          17.909 ns |         55.838 MHz 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RCLK (MPW)                                                                
+                                        |   (50% duty cycle) |           1.336 ns |        748.503 MHz 
+-------------------------------------------------------------------------------------------------------
+
+Clock Domain Crossing
+
+2.2  Endpoint slacks
+=======================
+-------------------------------------------------------
+          Listing 10 End Points          |    Slack    
+-------------------------------------------------------
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR0              
+                                         |   65.424 ns 
+olo_base_fifo_sync_inst/r.RdAddr[2].ff_inst/D              
+                                         |   65.727 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR1              
+                                         |   66.018 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR2              
+                                         |   66.018 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR3              
+                                         |   66.018 ns 
+olo_base_fifo_sync_inst/r.RdAddr[0].ff_inst/D              
+                                         |   66.058 ns 
+olo_base_fifo_sync_inst/r.RdAddr[1].ff_inst/D              
+                                         |   66.058 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR4              
+                                         |   66.137 ns 
+olo_base_fifo_sync_inst/r.RdAddr[3].ff_inst/D              
+                                         |   66.322 ns 
+olo_base_fifo_sync_inst/r.RdAddr[4].ff_inst/D              
+                                         |   66.441 ns 
+-------------------------------------------------------
+                                         |             
+Setup # of endpoints with negative slack:|           0 
+                                         |             
+-------------------------------------------------------
+
+2.3  Detailed Report
+=======================
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Detail report of critical paths
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    Detailed Report for timing paths 
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ ++++Path 1  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR0  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 5
+Delay Ratio      : 81.8% (route), 18.2% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 65.424 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_0_c_0.fa22_inst/A1->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_0_c_0.fa22_inst/S1
+                                          SLICE_R22C22A   A1_TO_F1_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[0]
+                                                          NET DELAY                3.357                 23.535  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR0
+                                                          ENDPOINT                 0.000                 23.535  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RCLK
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.383)                 88.959  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            88.959  
+Arrival Time                                                                                          -(23.535)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     65.424  
+
+
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/r.RdAddr[2].ff_inst/D  (SLICE_R22C23D)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 6
+Delay Ratio      : 79.0% (route), 21.0% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 65.727 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/A1->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/S1
+                                          SLICE_R22C22B   A1_TO_F1_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[2]
+                                                          NET DELAY                2.763                 22.941  2       
+olo_base_fifo_sync_inst/r.RdAddr_RNO[2]/B->olo_base_fifo_sync_inst/r.RdAddr_RNO[2]/Z
+                                          SLICE_R22C23D   D0_TO_F0_DELAY           0.476                 23.417  1       
+olo_base_fifo_sync_inst/RdAddr_0                          NET DELAY                0.000                 23.417  1       
+olo_base_fifo_sync_inst/r.RdAddr[2].ff_inst/D
+                                                          ENDPOINT                 0.000                 23.417  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+{olo_base_fifo_sync_inst/r.RdAddr[2].ff_inst/CK   olo_base_fifo_sync_inst/r.RdAddr[3].ff_inst/CK}
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.198)                 89.144  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            89.144  
+Arrival Time                                                                                          -(23.417)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     65.727  
+
+
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR1  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 5
+Delay Ratio      : 81.2% (route), 18.8% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.018 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/A0->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/S0
+                                          SLICE_R22C22B   A0_TO_F0_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[1]
+                                                          NET DELAY                2.763                 22.941  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR1
+                                                          ENDPOINT                 0.000                 22.941  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RCLK
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.383)                 88.959  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            88.959  
+Arrival Time                                                                                          -(22.941)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.018  
+
+
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR2  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 5
+Delay Ratio      : 81.2% (route), 18.8% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.018 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/A1->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/S1
+                                          SLICE_R22C22B   A1_TO_F1_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[2]
+                                                          NET DELAY                2.763                 22.941  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR2
+                                                          ENDPOINT                 0.000                 22.941  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RCLK
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.383)                 88.959  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            88.959  
+Arrival Time                                                                                          -(22.941)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.018  
+
+
+
+
+++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR3  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 5
+Delay Ratio      : 81.2% (route), 18.8% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.018 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/A0->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/S0
+                                          SLICE_R22C22C   A0_TO_F0_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[3]
+                                                          NET DELAY                2.763                 22.941  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR3
+                                                          ENDPOINT                 0.000                 22.941  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RCLK
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.383)                 88.959  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            88.959  
+Arrival Time                                                                                          -(22.941)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.018  
+
+
+
+
+++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/r.RdAddr[0].ff_inst/D  (SLICE_R22C21C)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 6
+Delay Ratio      : 78.6% (route), 21.4% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.058 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_0_c_0.fa22_inst/A1->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_0_c_0.fa22_inst/S1
+                                          SLICE_R22C22A   A1_TO_F1_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[0]
+                                                          NET DELAY                2.432                 22.610  2       
+olo_base_fifo_sync_inst/r.RdAddr_RNO[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNO[0]/Z
+                                          SLICE_R22C21C   C0_TO_F0_DELAY           0.476                 23.086  1       
+olo_base_fifo_sync_inst/RdAddr_2                          NET DELAY                0.000                 23.086  1       
+olo_base_fifo_sync_inst/r.RdAddr[0].ff_inst/D
+                                                          ENDPOINT                 0.000                 23.086  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+{olo_base_fifo_sync_inst/r.RdAddr[0].ff_inst/CK   olo_base_fifo_sync_inst/r.RdAddr[1].ff_inst/CK}
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.198)                 89.144  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            89.144  
+Arrival Time                                                                                          -(23.086)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.058  
+
+
+
+
+++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/r.RdAddr[1].ff_inst/D  (SLICE_R22C21C)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 6
+Delay Ratio      : 78.6% (route), 21.4% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.058 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/A0->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_1_c_0.fa22_inst/S0
+                                          SLICE_R22C22B   A0_TO_F0_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[1]
+                                                          NET DELAY                2.432                 22.610  2       
+olo_base_fifo_sync_inst/r.RdAddr_RNO[1]/B->olo_base_fifo_sync_inst/r.RdAddr_RNO[1]/Z
+                                          SLICE_R22C21C   C1_TO_F1_DELAY           0.476                 23.086  1       
+olo_base_fifo_sync_inst/RdAddr_1                          NET DELAY                0.000                 23.086  1       
+olo_base_fifo_sync_inst/r.RdAddr[1].ff_inst/D
+                                                          ENDPOINT                 0.000                 23.086  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+{olo_base_fifo_sync_inst/r.RdAddr[0].ff_inst/CK   olo_base_fifo_sync_inst/r.RdAddr[1].ff_inst/CK}
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.198)                 89.144  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            89.144  
+Arrival Time                                                                                          -(23.086)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.058  
+
+
+
+
+++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR4  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 5
+Delay Ratio      : 81.1% (route), 18.9% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.137 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.432                 19.610  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/C1->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/S1
+                                          SLICE_R22C22C   C1_TO_F1_DELAY           0.449                 20.059  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[4]
+                                                          NET DELAY                2.763                 22.822  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RADDR4
+                                                          ENDPOINT                 0.000                 22.822  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/RCLK
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.383)                 88.959  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            88.959  
+Arrival Time                                                                                          -(22.822)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.137  
+
+
+
+
+++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/r.RdAddr[3].ff_inst/D  (SLICE_R22C23D)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 6
+Delay Ratio      : 78.2% (route), 21.8% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.322 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.551                 19.729  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/A0->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/S0
+                                          SLICE_R22C22C   A0_TO_F0_DELAY           0.449                 20.178  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[3]
+                                                          NET DELAY                2.168                 22.346  2       
+olo_base_fifo_sync_inst/r.RdAddr_RNO[3]/B->olo_base_fifo_sync_inst/r.RdAddr_RNO[3]/Z
+                                          SLICE_R22C23D   D1_TO_F1_DELAY           0.476                 22.822  1       
+olo_base_fifo_sync_inst/RdAddr_scalar                     NET DELAY                0.000                 22.822  1       
+olo_base_fifo_sync_inst/r.RdAddr[3].ff_inst/D
+                                                          ENDPOINT                 0.000                 22.822  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+{olo_base_fifo_sync_inst/r.RdAddr[2].ff_inst/CK   olo_base_fifo_sync_inst/r.RdAddr[3].ff_inst/CK}
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.198)                 89.144  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            89.144  
+Arrival Time                                                                                          -(22.822)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.322  
+
+
+
+
+++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q  (SLICE_R24C22B)
+Path End         : olo_base_fifo_sync_inst/r.RdAddr[4].ff_inst/D  (SLICE_R22C23B)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 6
+Delay Ratio      : 78.1% (route), 21.9% (logic)
+Clock Skew       : 0.000 ns 
+Setup Constraint : 83.333 ns 
+Path Slack       : 66.441 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+clk                                       top             CLOCK LATENCY            0.000                  0.000  1       
+clk                                                       NET DELAY                0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                  0.510  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                  6.009  71      
+{olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK   olo_base_fifo_sync_inst/r.RdLevel[2].ff_inst/CK}
+                                                          CLOCK PIN                0.000                  6.009  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/CK->olo_base_fifo_sync_inst/r.RdLevel[1].ff_inst/Q
+                                          SLICE_R24C22B   CLK_TO_Q0_DELAY          1.388                  7.397  3       
+olo_base_fifo_sync_inst/RdLevel[1]                        NET DELAY                3.186                 10.583  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/A->olo_base_fifo_sync_inst/r.RdLevel_RNIQ6O85[1]/Z
+                                          SLICE_R23C21A   B0_TO_F0_DELAY           0.449                 11.032  3       
+olo_base_fifo_sync_inst/out_valid2lto5_3                  NET DELAY                2.168                 13.200  3       
+olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/D->olo_base_fifo_sync_inst/r.RdLevel_RNIEELHD[5]/Z
+                                          SLICE_R23C22D   D0_TO_F0_DELAY           0.449                 13.649  8       
+olo_base_fifo_sync_inst/rdaddr7                           NET DELAY                3.080                 16.729  8       
+olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/B->olo_base_fifo_sync_inst/r.RdAddr_RNIRKJ2Q[0]/Z
+                                          SLICE_R22C22D   B1_TO_F1_DELAY           0.449                 17.178  5       
+olo_base_fifo_sync_inst/rdaddr7_1_0                       NET DELAY                2.432                 19.610  5       
+olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/C1->olo_base_fifo_sync_inst/un1_r.RdAddr_cry_3_c_0.fa22_inst/S1
+                                          SLICE_R22C22C   C1_TO_F1_DELAY           0.449                 20.059  2       
+olo_base_fifo_sync_inst/i_ram/RdAddr_4[4]
+                                                          NET DELAY                2.168                 22.227  2       
+olo_base_fifo_sync_inst/r.RdAddr_RNO[4]/B->olo_base_fifo_sync_inst/r.RdAddr_RNO[4]/Z
+                                          SLICE_R22C23B   D0_TO_F0_DELAY           0.476                 22.703  1       
+olo_base_fifo_sync_inst/RdAddr_3                          NET DELAY                0.000                 22.703  1       
+olo_base_fifo_sync_inst/r.RdAddr[4].ff_inst/D
+                                                          ENDPOINT                 0.000                 22.703  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr      Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+                                                          CONSTRAINT               0.000                 83.333  1       
+clk                                       top             CLOCK LATENCY            0.000                 83.333  1       
+clk                                                       NET DELAY                0.000                 83.333  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY     0.510                 83.843  71      
+reset_gen_inst/clk_c                                      NET DELAY                5.499                 89.342  71      
+{olo_base_fifo_sync_inst/r.RdAddr[4].ff_inst/CK   olo_base_fifo_sync_inst/r.WrAddr[4].ff_inst/CK}
+                                                          CLOCK PIN                0.000                 89.342  1       
+                                                          Uncertainty           -(0.000)                 89.342  
+                                                          Setup time            -(0.198)                 89.144  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Required Time                                                                                            89.144  
+Arrival Time                                                                                          -(22.703)  
+----------------------------------------  --------------  --------------------  --------  ---------------------  ------  
+Path Slack  (Passed)                                                                                     66.441  
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+                    End of Detailed Report for timing paths 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
+##########################################################
+
+
+
+===============================================================
+3  Hold at Speed Grade m Corner at -40 Degrees
+===============================================================
+
+3.1  Endpoint slacks
+=======================
+-------------------------------------------------------
+          Listing 10 End Points          |    Slack    
+-------------------------------------------------------
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA1              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA2              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA3              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA4              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA6              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA7              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR0              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR1              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR2              
+                                         |    1.454 ns 
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR3              
+                                         |    1.454 ns 
+-------------------------------------------------------
+                                         |             
+Hold # of endpoints with negative slack: |           0 
+                                         |             
+-------------------------------------------------------
+
+3.2  Detailed Report
+=======================
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Detail report of critical paths
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                    Detailed Report for timing paths 
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+ ++++Path 1  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Path Begin       : uart_inst/r.RxShiftReg[1].ff_inst/Q  (SLICE_R19C22A)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA1  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{uart_inst/r.RxShiftReg[1].ff_inst/CK   uart_inst/r.RxShiftReg[0].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+uart_inst/r.RxShiftReg[1].ff_inst/CK->uart_inst/r.RxShiftReg[1].ff_inst/Q
+                                          SLICE_R19C22A   CLK_TO_Q0_DELAY       0.779                  4.145  2       
+uart_inst/uart_rx_data[1]                                 NET DELAY             0.712                  4.857  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA1
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 2 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : uart_inst/r.RxShiftReg[2].ff_inst/Q  (SLICE_R19C22B)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA2  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{uart_inst/r.RxShiftReg[3].ff_inst/CK   uart_inst/r.RxShiftReg[2].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+uart_inst/r.RxShiftReg[2].ff_inst/CK->uart_inst/r.RxShiftReg[2].ff_inst/Q
+                                          SLICE_R19C22B   CLK_TO_Q1_DELAY       0.779                  4.145  2       
+uart_inst/uart_rx_data[2]                                 NET DELAY             0.712                  4.857  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA2
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 3 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : uart_inst/r.RxShiftReg[3].ff_inst/Q  (SLICE_R19C22B)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA3  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{uart_inst/r.RxShiftReg[3].ff_inst/CK   uart_inst/r.RxShiftReg[2].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+uart_inst/r.RxShiftReg[3].ff_inst/CK->uart_inst/r.RxShiftReg[3].ff_inst/Q
+                                          SLICE_R19C22B   CLK_TO_Q0_DELAY       0.779                  4.145  2       
+uart_inst/uart_rx_data[3]                                 NET DELAY             0.712                  4.857  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA3
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 4 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : uart_inst/r.RxShiftReg[4].ff_inst/Q  (SLICE_R19C22C)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA4  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{uart_inst/r.RxShiftReg[5].ff_inst/CK   uart_inst/r.RxShiftReg[4].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+uart_inst/r.RxShiftReg[4].ff_inst/CK->uart_inst/r.RxShiftReg[4].ff_inst/Q
+                                          SLICE_R19C22C   CLK_TO_Q1_DELAY       0.779                  4.145  2       
+uart_inst/uart_rx_data[4]                                 NET DELAY             0.712                  4.857  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA4
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 5 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : uart_inst/r.RxShiftReg[6].ff_inst/Q  (SLICE_R19C22D)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA6  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{uart_inst/r.RxShiftReg[7].ff_inst/CK   uart_inst/r.RxShiftReg[6].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+uart_inst/r.RxShiftReg[6].ff_inst/CK->uart_inst/r.RxShiftReg[6].ff_inst/Q
+                                          SLICE_R19C22D   CLK_TO_Q1_DELAY       0.779                  4.145  2       
+uart_inst/uart_rx_data[6]                                 NET DELAY             0.712                  4.857  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA6
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 6 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : uart_inst/r.RxShiftReg[7].ff_inst/Q  (SLICE_R19C22D)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA7  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{uart_inst/r.RxShiftReg[7].ff_inst/CK   uart_inst/r.RxShiftReg[6].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+uart_inst/r.RxShiftReg[7].ff_inst/CK->uart_inst/r.RxShiftReg[7].ff_inst/Q
+                                          SLICE_R19C22D   CLK_TO_Q0_DELAY       0.779                  4.145  2       
+uart_inst/uart_rx_data[7]                                 NET DELAY             0.712                  4.857  2       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WDATA7
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 7 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.WrAddr[0].ff_inst/Q  (SLICE_R21C23D)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR0  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{olo_base_fifo_sync_inst/r.WrAddr[1].ff_inst/CK   olo_base_fifo_sync_inst/r.WrAddr[0].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+olo_base_fifo_sync_inst/r.WrAddr[0].ff_inst/CK->olo_base_fifo_sync_inst/r.WrAddr[0].ff_inst/Q
+                                          SLICE_R21C23D   CLK_TO_Q1_DELAY       0.779                  4.145  3       
+olo_base_fifo_sync_inst/i_ram/WrAddr[0]                   NET DELAY             0.712                  4.857  3       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR0
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 8 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.WrAddr[1].ff_inst/Q  (SLICE_R21C23D)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR1  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{olo_base_fifo_sync_inst/r.WrAddr[1].ff_inst/CK   olo_base_fifo_sync_inst/r.WrAddr[0].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+olo_base_fifo_sync_inst/r.WrAddr[1].ff_inst/CK->olo_base_fifo_sync_inst/r.WrAddr[1].ff_inst/Q
+                                          SLICE_R21C23D   CLK_TO_Q0_DELAY       0.779                  4.145  3       
+olo_base_fifo_sync_inst/i_ram/WrAddr[1]                   NET DELAY             0.712                  4.857  3       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR1
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 9 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.WrAddr[2].ff_inst/Q  (SLICE_R21C24A)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR2  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{olo_base_fifo_sync_inst/r.WrAddr[3].ff_inst/CK   olo_base_fifo_sync_inst/r.WrAddr[2].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+olo_base_fifo_sync_inst/r.WrAddr[2].ff_inst/CK->olo_base_fifo_sync_inst/r.WrAddr[2].ff_inst/Q
+                                          SLICE_R21C24A   CLK_TO_Q1_DELAY       0.779                  4.145  3       
+olo_base_fifo_sync_inst/i_ram/WrAddr[2]                   NET DELAY             0.712                  4.857  3       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR2
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
+
+++++ Path 10 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+Path Begin       : olo_base_fifo_sync_inst/r.WrAddr[3].ff_inst/Q  (SLICE_R21C24A)
+Path End         : olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR3  (EBR_EBR_R20C22)
+Source Clock     : main_clk (R)
+Destination Clock: main_clk (R)
+Logic Level      : 1
+Delay Ratio      : 47.8% (route), 52.2% (logic)
+Clock Skew       : 0.000 ns 
+Hold Constraint  : 0.000 ns 
+Path Slack       : 1.454 ns  (Passed)
+
+
+Source Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+{olo_base_fifo_sync_inst/r.WrAddr[3].ff_inst/CK   olo_base_fifo_sync_inst/r.WrAddr[2].ff_inst/CK}
+                                                          CLOCK PIN             0.000                  3.366  1       
+
+
+Data Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+olo_base_fifo_sync_inst/r.WrAddr[3].ff_inst/CK->olo_base_fifo_sync_inst/r.WrAddr[3].ff_inst/Q
+                                          SLICE_R21C24A   CLK_TO_Q0_DELAY       0.779                  4.145  3       
+olo_base_fifo_sync_inst/i_ram/WrAddr[3]                   NET DELAY             0.712                  4.857  3       
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WADDR3
+                                                          ENDPOINT              0.000                  4.857  1       
+
+
+Destination Clock Path
+Name                                      Cell/Site Name  Delay Name            Incr   Arrival/Required Time  Fanout  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+                                                          CONSTRAINT            0.000                  0.000  1       
+clk                                       top             CLOCK LATENCY         0.000                  0.000  1       
+clk                                                       NET DELAY             0.000                  0.000  1       
+clk_ibuf.bb_inst/B->clk_ibuf.bb_inst/O    PIO_35          IOPAD_TO_PADDI_DELAY  0.282                  0.282  71      
+reset_gen_inst/clk_c                                      NET DELAY             3.084                  3.366  71      
+olo_base_fifo_sync_inst/i_ram/mem_v_mem_v_0_0.ebr_inst/WCLK
+                                                          CLOCK PIN             0.000                  3.366  1       
+                                                          Uncertainty           0.000                  3.366  
+                                                          Hold time             0.037                  3.403  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Required Time                                                                                         -3.403  
+Arrival Time                                                                                           4.857  
+----------------------------------------  --------------  --------------------  -----  ---------------------  ------  
+Path Slack  (Passed)                                                                                   1.454  
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+                    End of Detailed Report for timing paths 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+
+
+##########################################################
+
+
+

@@ -1,0 +1,4 @@
+-gui
+-msgset "/home/seb/ecam/robot/project/robot/promote.xml"
+
+-freq 0

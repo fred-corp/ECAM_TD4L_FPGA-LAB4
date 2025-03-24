@@ -1,0 +1,81 @@
+---------------------------------------------------
+Report for cell top
+   Instance path: top
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	        214        100.0
+                               LUTGATE	        124        100.0
+                                LUTCCU	         90        100.0
+                                 IOBUF	         12        100.0
+                                PFUREG	        114        100.0
+                                   EBR	          1        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+olo_base_fifo_sync_work_top_rtl_0layer0	          1        25.2
+olo_base_reset_gen_work_top_rtl_0layer0	          1         0.0
+olo_intf_uart_12000000.000000_230400.000000_8_1_none	          1        46.7
+---------------------------------------------------
+Report for cell olo_base_reset_gen_work_top_rtl_0layer0
+   Instance path: top/reset_gen_inst
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                PFUREG	          5         4.4
+---------------------------------------------------
+Report for cell olo_intf_uart_12000000.000000_230400.000000_8_1_none
+   Instance path: top/uart_inst
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	        100        46.7
+                               LUTGATE	         64        51.6
+                                LUTCCU	         36        40.0
+                                PFUREG	         61        53.5
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+olo_base_strobe_gen_12000000.000000_460800.000000_true	          1        10.3
+olo_base_strobe_gen_12000000.000000_460800.000000_true_1	          1        11.2
+    olo_intf_sync_work_top_rtl_0layer0	          1         0.5
+---------------------------------------------------
+Report for cell olo_base_strobe_gen_12000000.000000_460800.000000_true
+   Instance path: top/uart_inst/i_strb_tx
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         22        10.3
+                               LUTGATE	         10         8.1
+                                LUTCCU	         12        13.3
+                                PFUREG	         12        10.5
+---------------------------------------------------
+Report for cell olo_base_strobe_gen_12000000.000000_460800.000000_true_1
+   Instance path: top/uart_inst/i_strb_rx
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         24        11.2
+                               LUTGATE	         12         9.7
+                                LUTCCU	         12        13.3
+                                PFUREG	         12        10.5
+---------------------------------------------------
+Report for cell olo_intf_sync_work_top_rtl_0layer0
+   Instance path: top/uart_inst/i_sync
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	          1         0.5
+                               LUTGATE	          1         0.8
+                                PFUREG	          2         1.8
+---------------------------------------------------
+Report for cell olo_base_fifo_sync_work_top_rtl_0layer0
+   Instance path: top/olo_base_fifo_sync_inst
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  LUT4	         54        25.2
+                               LUTGATE	         26        21.0
+                                LUTCCU	         28        31.1
+                                PFUREG	         24        21.1
+                                   EBR	          1        100.0
+SUB MODULES
+                                  cell	      count    LUT4 Usage(%)
+olo_base_ram_sdp_32_8_false_1_auto_RBW_false	          1         0.0
+---------------------------------------------------
+Report for cell olo_base_ram_sdp_32_8_false_1_auto_RBW_false
+   Instance path: top/olo_base_fifo_sync_inst/i_ram
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                   EBR	          1        100.0

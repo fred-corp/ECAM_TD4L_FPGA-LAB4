@@ -1,0 +1,5 @@
+@E: CD590 :"/home/seb/devel/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd":187:19:187:39|Instantiated entity olo_base_ram_sdp has not been analyzed.
+@E: CD424 :"/home/seb/devel/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd":203:16:203:16|Expecting architecture identifier
+@E: Parse errors encountered - exiting
+@E::VHDL compiler failed
+

@@ -1,0 +1,9 @@
+@N: MF916 |Option synthesis_strategy=base is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled. (Command "set_option -fix_gated_and_generated_clocks 0" in the project file.)
+@N: BN362 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":321:8:321:9|Removing sequential instance r\.Rx_ParityError (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl)) of type view:PrimLib.sdffre(prim) because it does not drive other instances.
+@N: MO225 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":321:8:321:9|There are no possible illegal states for state machine r\.StateRx[0:3] (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl)); safe FSM implementation is not required.
+@N: MO225 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":321:8:321:9|There are no possible illegal states for state machine r\.StateTx[0:3] (in view: work.olo_intf_uart_12000000\.000000_230400\.000000_8_1_none(rtl)); safe FSM implementation is not required.
+@N: FX1184 |Applying syn_allowed_resources blockrams=30 on top level netlist top 
+@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
+@N: BN225 |Writing default property annotation file /home/seb/ecam/robot/project/robot/impl_1/robot_impl_1.sap.

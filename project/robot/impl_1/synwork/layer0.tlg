@@ -1,0 +1,86 @@
+@N: CD630 :"/home/seb/ecam/robot/rtl/top/top.vhd":12:7:12:9|Synthesizing work.top.rtl.
+@W: CD326 :"/home/seb/ecam/robot/rtl/top/top.vhd":88:37:88:59|Port in_level of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"/home/seb/ecam/robot/rtl/top/top.vhd":88:37:88:59|Port out_level of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"/home/seb/ecam/robot/rtl/top/top.vhd":88:37:88:59|Port full of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"/home/seb/ecam/robot/rtl/top/top.vhd":88:37:88:59|Port almfull of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"/home/seb/ecam/robot/rtl/top/top.vhd":88:37:88:59|Port empty of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@W: CD326 :"/home/seb/ecam/robot/rtl/top/top.vhd":88:37:88:59|Port almempty of entity work.olo_base_fifo_sync is unconnected. If a port needs to remain unconnected, use the keyword open.
+@N: CD630 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd":33:7:33:24|Synthesizing work.olo_base_fifo_sync.rtl.
+@W: CD434 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_fifo_sync.vhd":88:43:88:45|Signal rst in the sensitivity list is not used in the process. Make sure all variables in the sensitivity list are referenced in the process.
+@N: CD630 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd":34:7:34:22|Synthesizing work.olo_base_ram_sdp.rtl.
+@W: CD246 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd":125:45:125:71|Range has negative width!
+@W: CD454 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd":125:16:125:40|Storing to null range (2 to 1) of variable rdpipe 
+Post processing for work.olo_base_ram_sdp.rtl
+Running optimization stage 1 on olo_base_ram_sdp .......
+@N: CL134 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd":68:20:68:24|Found RAM mem_v, depth=32, width=8
+Finished optimization stage 1 on olo_base_ram_sdp (CPU Time 0h:00m:00s, Memory Used current: 186MB peak: 186MB)
+Post processing for work.olo_base_fifo_sync.rtl
+Running optimization stage 1 on olo_base_fifo_sync .......
+Finished optimization stage 1 on olo_base_fifo_sync (CPU Time 0h:00m:00s, Memory Used current: 186MB peak: 186MB)
+@N: CD630 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":33:7:33:19|Synthesizing work.olo_intf_uart.rtl.
+@N: CD233 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":65:19:65:20|Using sequential encoding for type statetx_t.
+@N: CD231 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":66:19:66:20|Using onehot encoding for type staterx_t. For example, enumeration idle_s is mapped to "10000".
+@N: CD630 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_sync.vhd":34:7:34:19|Synthesizing work.olo_intf_sync.struct.
+Post processing for work.olo_intf_sync.struct
+Running optimization stage 1 on olo_intf_sync .......
+Finished optimization stage 1 on olo_intf_sync (CPU Time 0h:00m:00s, Memory Used current: 187MB peak: 187MB)
+@N: CD630 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_strobe_gen.vhd":34:7:34:25|Synthesizing work.olo_base_strobe_gen.rtl.
+Post processing for work.olo_base_strobe_gen.rtl
+Running optimization stage 1 on olo_base_strobe_gen .......
+Finished optimization stage 1 on olo_base_strobe_gen (CPU Time 0h:00m:00s, Memory Used current: 187MB peak: 187MB)
+Post processing for work.olo_intf_uart.rtl
+Running optimization stage 1 on olo_intf_uart .......
+Finished optimization stage 1 on olo_intf_uart (CPU Time 0h:00m:00s, Memory Used current: 187MB peak: 188MB)
+@N: CD630 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd":35:7:35:24|Synthesizing work.olo_base_reset_gen.struct.
+@W: CD638 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd":61:11:61:18|Signal pulsecnt is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_reset_gen.vhd":62:11:62:18|Signal rstpulse is undriven. Either assign the signal a value or remove the signal declaration.
+Post processing for work.olo_base_reset_gen.struct
+Running optimization stage 1 on olo_base_reset_gen .......
+Finished optimization stage 1 on olo_base_reset_gen (CPU Time 0h:00m:00s, Memory Used current: 188MB peak: 188MB)
+Post processing for work.top.rtl
+Running optimization stage 1 on top .......
+@W: CL240 :"/home/seb/ecam/robot/rtl/top/top.vhd":27:8:27:15|Signal pwm_mot2 is floating; a simulation mismatch is possible.
+@W: CL240 :"/home/seb/ecam/robot/rtl/top/top.vhd":26:8:26:15|Signal pwm_mot1 is floating; a simulation mismatch is possible.
+@W: CL240 :"/home/seb/ecam/robot/rtl/top/top.vhd":20:8:20:14|Signal us_trig is floating; a simulation mismatch is possible.
+Finished optimization stage 1 on top (CPU Time 0h:00m:00s, Memory Used current: 188MB peak: 188MB)
+Running optimization stage 2 on olo_base_reset_gen_work_top_rtl_0layer0 .......
+Finished optimization stage 2 on olo_base_reset_gen_work_top_rtl_0layer0 (CPU Time 0h:00m:00s, Memory Used current: 188MB peak: 188MB)
+Running optimization stage 2 on olo_base_strobe_gen_12000000.000000_460800.000000_true .......
+Finished optimization stage 2 on olo_base_strobe_gen_12000000.000000_460800.000000_true (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_intf_sync_work_top_rtl_0layer0 .......
+Finished optimization stage 2 on olo_intf_sync_work_top_rtl_0layer0 (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_intf_uart_12000000.000000_230400.000000_8_1_none .......
+@N: CL189 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":321:8:321:9|Register bit r.TxShiftReg(9) is always 0.
+@W: CL260 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":321:8:321:9|Pruning register bit 9 of r.TxShiftReg(9 downto 0). If this is not the intended behavior, drive the input with valid values, or an input from the top level.
+@N: CL201 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":321:8:321:9|Trying to extract state machine for register r.StateTx.
+Extracted state machine for register r.StateTx
+State machine has 4 reachable states with original encodings of:
+   00
+   01
+   10
+   11
+@N: CL201 :"/home/seb/ecam/robot/open-logic-main/src/intf/vhdl/olo_intf_uart.vhd":321:8:321:9|Trying to extract state machine for register r.StateRx.
+Extracted state machine for register r.StateRx
+State machine has 4 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   10000
+Finished optimization stage 2 on olo_intf_uart_12000000.000000_230400.000000_8_1_none (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_base_ram_sdp_32_8_false_1_auto_RBW_false .......
+@N: CL159 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd":48:8:48:12|Input Wr_Be is unused.
+@N: CL159 :"/home/seb/ecam/robot/open-logic-main/src/base/vhdl/olo_base_ram_sdp.vhd":50:8:50:13|Input Rd_Clk is unused.
+Finished optimization stage 2 on olo_base_ram_sdp_32_8_false_1_auto_RBW_false (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on olo_base_fifo_sync_work_top_rtl_0layer0 .......
+Finished optimization stage 2 on olo_base_fifo_sync_work_top_rtl_0layer0 (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+Running optimization stage 2 on top .......
+@N: CL159 :"/home/seb/ecam/robot/rtl/top/top.vhd":21:8:21:14|Input us_echo is unused.
+@N: CL159 :"/home/seb/ecam/robot/rtl/top/top.vhd":23:8:23:12|Input quad1 is unused.
+@N: CL159 :"/home/seb/ecam/robot/rtl/top/top.vhd":24:8:24:12|Input quad2 is unused.
+Finished optimization stage 2 on top (CPU Time 0h:00m:00s, Memory Used current: 189MB peak: 189MB)
+
+For a summary of runtime per design unit, please see file:
+==========================================================
+@L: /home/seb/ecam/robot/project/robot/impl_1/synwork/layer0.duruntime
+
+

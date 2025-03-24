@@ -1,0 +1,1 @@
+ -link  -top  top  -multisrs  /home/seb/ecam/robot/project/robot/impl_1/synwork/robot_impl_1_comp.srs  -osyn  /home/seb/ecam/robot/project/robot/impl_1/synwork/robot_impl_1_mult.srs  -log  /home/seb/ecam/robot/project/robot/impl_1/synlog/robot_impl_1_multi_srs_gen.srr 

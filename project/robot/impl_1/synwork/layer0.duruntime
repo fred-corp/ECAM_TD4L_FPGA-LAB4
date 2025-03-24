@@ -1,0 +1,19 @@
+Runtime Summary:
+================
+
+	The following design units have negligible CPU times:
+	=====================================================
+		*Library: work, Entity: olo_base_reset_gen_work_top_rtl_0layer0, Architecture: struct
+			Hardware Generation Phase, Initial Cleanup Phase, Optimization Phase: Negligible CPU time
+		*Library: work, Entity: olo_base_strobe_gen_12000000.000000_460800.000000_true, Architecture: rtl
+			Hardware Generation Phase, Initial Cleanup Phase, Optimization Phase: Negligible CPU time
+		*Library: work, Entity: olo_intf_sync_work_top_rtl_0layer0, Architecture: struct
+			Hardware Generation Phase, Initial Cleanup Phase, Optimization Phase: Negligible CPU time
+		*Library: work, Entity: olo_intf_uart_12000000.000000_230400.000000_8_1_none, Architecture: rtl
+			Hardware Generation Phase, Initial Cleanup Phase, Optimization Phase: Negligible CPU time
+		*Library: work, Entity: olo_base_ram_sdp_32_8_false_1_auto_RBW_false, Architecture: rtl
+			Hardware Generation Phase, Initial Cleanup Phase, Optimization Phase: Negligible CPU time
+		*Library: work, Entity: olo_base_fifo_sync_work_top_rtl_0layer0, Architecture: rtl
+			Hardware Generation Phase, Initial Cleanup Phase, Optimization Phase: Negligible CPU time
+		*Library: work, Entity: top, Architecture: rtl
+			Hardware Generation Phase, Initial Cleanup Phase, Optimization Phase: Negligible CPU time

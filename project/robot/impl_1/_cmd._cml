@@ -1,0 +1,1 @@
+-link -encrypt -top top -osyn /home/seb/ecam/robot/project/robot/impl_1/synwork/robot_impl_1_comp.srs /home/seb/ecam/robot/project/robot/impl_1/synwork/layer0.srs  -jobname linker  
