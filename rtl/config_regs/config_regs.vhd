@@ -25,7 +25,10 @@ entity config_regs is
         -- Outputs
         led_r : out std_logic;
         led_g : out std_logic;
-        led_b : out std_logic
+        led_b : out std_logic;
+
+        mot1_pwm : out std_logic_vector(15 downto 0);
+        mot2_pwm : out std_logic_vector(15 downto 0)
     );
 end entity config_regs;
 
@@ -36,12 +39,19 @@ begin
   begin
     if rising_edge(clk) then
       if s_pwrite = '1' then
+        -- LED registers
         if s_paddr = x"00" then
           led_r <= s_pwdata(0);
         elsif s_paddr = x"02" then
           led_g <= s_pwdata(0);
         elsif s_paddr = x"04" then
           led_b <= s_pwdata(0);
+
+        -- Motor PWM registers
+        elsif s_paddr = x"06" then
+          mot1_pwm <= s_pwdata;
+        elsif s_paddr = x"08" then
+          mot2_pwm <= s_pwdata;
         end if;
       else
         s_prdata <= x"0123";

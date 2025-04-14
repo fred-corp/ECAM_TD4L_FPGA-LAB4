@@ -56,6 +56,10 @@ architecture rtl of top is
   signal led_out_g : std_logic := '0';
   signal led_out_b : std_logic := '0';
 
+  -- Motor PWM
+  signal mot1_pwm : std_logic_vector(15 downto 0);
+  signal mot2_pwm : std_logic_vector(15 downto 0);
+
   signal counter : unsigned(23 downto 0) := (others => '0');
 begin
   -- *** Reset resynchronization ***
@@ -115,16 +119,47 @@ begin
     (
       clk       => Clk,
       reset     => reset,
-      led_r => led_out_r,
-      led_g => led_out_g,
-      led_b => led_out_b,
       s_paddr   => apb_paddr,
       s_psel    => apb_psel,
       s_penable => apb_penable,
       s_pwrite  => apb_pwrite,
       s_pwdata  => apb_pwdata,
-      s_prdata  => apb_prdata
+      s_prdata  => apb_prdata,
+      led_r => led_out_r,
+      led_g => led_out_g,
+      led_b => led_out_b,
+      mot1_pwm => mot1_pwm,
+      mot2_pwm => mot2_pwm
     );
+
+  -- *** PWM drivers ***
+  pwm_driver_mot1_inst : entity work.pwm_driver
+    generic map(
+      clk_freq => 12.0e6,
+      pwm_freq => 25.0e3
+    )
+    port map
+    (
+      clk       => Clk,
+      reset     => reset,
+      pwm_data  => mot1_pwm,
+      pwm_out_1 => pwm_mot1(0),
+      pwm_out_2 => pwm_mot1(1)
+    );
+  pwm_driver_mot2_inst : entity work.pwm_driver
+    generic map(
+      clk_freq => 12.0e6,
+      pwm_freq => 25.0e3
+    )
+    port map
+    (
+      clk       => Clk,
+      reset     => reset,
+      pwm_data  => mot2_pwm,
+      pwm_out_1 => pwm_mot2(0),
+      pwm_out_2 => pwm_mot2(1)
+    );
+
 
   -------- TO BE REMOVED DURING EXERCISES -----------------
   -- led_out_r <= counter(counter'high);

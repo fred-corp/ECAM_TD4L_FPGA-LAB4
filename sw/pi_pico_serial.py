@@ -39,5 +39,6 @@ if __name__ == "__main__":
     ice = PicoIce()
     print(hex(ice.read(0x2)))
     ice.write(0x0, 0)
-    ice.write(0x2, 0)
+    ice.write(0x2, 1)
     ice.write(0x4, 0)
+    ice.write(0x6, 0b0000000000111111)
