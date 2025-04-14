@@ -11,56 +11,58 @@ use ieee.math_real.all;
 
 entity top is
   port (
-    clk  : in std_logic;
-    rstn : in std_logic;
+    clk  : in std_logic; --! System clock
+    rstn : in std_logic; --! System reset (active low)
 
-    uart_txd : out std_logic;
-    uart_rxd : in std_logic;
+    uart_txd : out std_logic; --! UART transmitter
+    uart_rxd : in std_logic; --! UART receiver
 
-    us_trig : out std_logic; -- Ultrasound Trigger
-    us_echo : in std_logic := '0'; -- Ultrasound Echo
+    us_trig : out std_logic; --! Ultrasound Trigger
+    us_echo : in std_logic := '0'; --! Ultrasound Echo
 
-    quad1 : in std_logic_vector(1 downto 0) := (others => '0'); -- Quadrature Encoder 1
-    quad2 : in std_logic_vector(1 downto 0) := (others => '0'); -- Quadrature Encoder 2
+    quad1 : in std_logic_vector(1 downto 0) := (others => '0'); --! Quadrature Encoder 1
+    quad2 : in std_logic_vector(1 downto 0) := (others => '0'); --! Quadrature Encoder 2
 
-    pwm_mot1 : out std_logic_vector(1 downto 0); -- Motor 1 control
-    pwm_mot2 : out std_logic_vector(1 downto 0); -- Motor 2 control
+    pwm_mot1 : out std_logic_vector(1 downto 0); --! Motor 1 control
+    pwm_mot2 : out std_logic_vector(1 downto 0); --! Motor 2 control
 
-    led_r : out std_logic;
-    led_g : out std_logic;
-    led_b : out std_logic
+    led_r : out std_logic; --! Red LED
+    led_g : out std_logic; --! Green LED
+    led_b : out std_logic --! Blue LED
   );
 end entity top;
 
 architecture rtl of top is
   -- Reset
-  signal reset : std_logic;
+  signal reset : std_logic; --! Reset signal (active high)
 
   -- UART
-  signal uart_tx_valid : std_logic := '0';
-  signal uart_tx_ready : std_logic;
-  signal uart_tx_data  : std_logic_vector(7 downto 0);
-  signal uart_rx_valid : std_logic := '0';
-  signal uart_rx_data  : std_logic_vector(7 downto 0);
+  signal uart_tx_valid : std_logic := '0'; --! UART transmitter valid
+  signal uart_tx_ready : std_logic; --! UART transmitter ready
+  signal uart_tx_data  : std_logic_vector(7 downto 0); --! UART transmitter data
+  signal uart_rx_valid : std_logic := '0'; --! UART receiver valid
+  signal uart_rx_data  : std_logic_vector(7 downto 0); --! UART receiver data
 
   -- APB
-  signal apb_paddr   : std_logic_vector(7 downto 0);
-  signal apb_psel    : std_logic;
-  signal apb_penable : std_logic;
-  signal apb_pwrite  : std_logic;
-  signal apb_pwdata  : std_logic_vector(15 downto 0);
-  signal apb_prdata  : std_logic_vector(15 downto 0);
+  signal apb_paddr   : std_logic_vector(7 downto 0); --! APB address
+  signal apb_psel    : std_logic; --! APB select
+  signal apb_penable : std_logic; --! APB enable
+  signal apb_pwrite  : std_logic; --! APB write
+  signal apb_pwdata  : std_logic_vector(15 downto 0); --! APB write data
+  signal apb_prdata  : std_logic_vector(15 downto 0); --! APB read data
 
   -- LEDs
-  signal led_out_r : std_logic := '0';
-  signal led_out_g : std_logic := '0';
-  signal led_out_b : std_logic := '0';
+  signal led_out_r : std_logic := '0'; --! Red LED output signal
+  signal led_out_g : std_logic := '0'; --! Green LED output signal
+  signal led_out_b : std_logic := '0'; --! Blue LED output signal
 
   -- Motor PWM
-  signal mot1_pwm : std_logic_vector(15 downto 0);
-  signal mot2_pwm : std_logic_vector(15 downto 0);
+  signal mot1_pwm : std_logic_vector(15 downto 0); --! Motor 1 PWM data
+  signal mot2_pwm : std_logic_vector(15 downto 0); --! Motor 2 PWM data
 
-  signal counter : unsigned(23 downto 0) := (others => '0');
+  -- Counter
+  signal counter : unsigned(23 downto 0) := (others => '0'); --! Counter for LED blinking
+
 begin
   -- *** Reset resynchronization ***
   reset_gen_inst : entity work.olo_base_reset_gen
@@ -125,11 +127,11 @@ begin
       s_pwrite  => apb_pwrite,
       s_pwdata  => apb_pwdata,
       s_prdata  => apb_prdata,
-      led_r => led_out_r,
-      led_g => led_out_g,
-      led_b => led_out_b,
-      mot1_pwm => mot1_pwm,
-      mot2_pwm => mot2_pwm
+      led_r     => led_out_r,
+      led_g     => led_out_g,
+      led_b     => led_out_b,
+      mot1_pwm  => mot1_pwm,
+      mot2_pwm  => mot2_pwm
     );
 
   -- *** PWM drivers ***
@@ -159,29 +161,6 @@ begin
       pwm_out_1 => pwm_mot2(0),
       pwm_out_2 => pwm_mot2(1)
     );
-
-
-  -------- TO BE REMOVED DURING EXERCISES -----------------
-  -- led_out_r <= counter(counter'high);
-  -- led_out_g <= counter(counter'high);
-  -- led_out_b <= counter(counter'high);
-
-  -- olo_base_fifo_sync_inst : entity work.olo_base_fifo_sync
-  --   generic map(
-  --     Width_g => 8,
-  --     Depth_g => 32
-  --   )
-  --   port map
-  --   (
-  --     Clk       => Clk,
-  --     Rst       => reset,
-  --     In_Data   => uart_rx_data,
-  --     In_Valid  => uart_rx_valid,
-  --     In_Ready  => open,
-  --     Out_Data  => uart_tx_data,
-  --     Out_Valid => uart_tx_valid,
-  --     Out_Ready => uart_tx_ready
-  --   );
 
   main : process (clk)
   begin

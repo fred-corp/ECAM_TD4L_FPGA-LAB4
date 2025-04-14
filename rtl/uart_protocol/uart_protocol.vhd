@@ -11,24 +11,24 @@ use ieee.math_real.all;
 
 entity uart_protocol is
   port (
-    clk   : in std_logic;
-    reset : in std_logic;
+    clk   : in std_logic; --! Main clock
+    reset : in std_logic; --! Reset signal (active high)
 
     -- UART interface
-    rx_data  : in std_logic_vector(7 downto 0);
-    rx_valid : in std_logic;
+    rx_data  : in std_logic_vector(7 downto 0); --! UART receiver data
+    rx_valid : in std_logic; --! UART receiver valid
 
-    tx_data  : out std_logic_vector(7 downto 0);
-    tx_valid : out std_logic;
-    tx_ready : in std_logic;
+    tx_data  : out std_logic_vector(7 downto 0); --! UART transmitter data
+    tx_valid : out std_logic; --! UART transmitter valid
+    tx_ready : in std_logic; --! UART transmitter ready
 
     -- APB interface
-    m_paddr   : out std_logic_vector(7 downto 0);
-    m_psel    : out std_logic;
-    m_penable : out std_logic;
-    m_pwrite  : out std_logic;
-    m_pwdata  : out std_logic_vector(15 downto 0);
-    m_prdata  : in std_logic_vector(15 downto 0)
+    m_paddr   : out std_logic_vector(7 downto 0); --! APB address
+    m_psel    : out std_logic; --! APB select
+    m_penable : out std_logic; --! APB enable
+    m_pwrite  : out std_logic; --! APB write
+    m_pwdata  : out std_logic_vector(15 downto 0); --! APB write data
+    m_prdata  : in std_logic_vector(15 downto 0) --! APB read data
   );
 end entity uart_protocol;
 
@@ -41,12 +41,12 @@ architecture rtl of uart_protocol is
   IDLE
   );
 
-  signal state      : UART_STATUS                   := IDLE;
-  signal write_flag : std_logic                     := '0';
-  signal apb_data   : std_logic_vector(15 downto 0) := (others => '0');
-  signal address    : std_logic_vector(7 downto 0)  := (others => '0');
-  signal wr_data    : std_logic_vector(15 downto 0) := (others => '0');
-  signal tx_valid_i : std_logic                     := '0';
+  signal state      : UART_STATUS                   := IDLE; --! State machine state
+  signal write_flag : std_logic                     := '0'; --! Write flag
+  signal apb_data   : std_logic_vector(15 downto 0) := (others => '0'); --! APB data
+  signal address    : std_logic_vector(7 downto 0)  := (others => '0'); --! Address
+  signal wr_data    : std_logic_vector(15 downto 0) := (others => '0'); --! Write data
+  signal tx_valid_i : std_logic                     := '0'; --! Transmitter valid signal
 
 begin
 
