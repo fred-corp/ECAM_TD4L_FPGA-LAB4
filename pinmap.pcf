@@ -10,14 +10,14 @@ set_io --warn-no-port rstn 10
 set_io --warn-no-port clk 35
 set_io --warn-no-port uart_rxd 27
 set_io --warn-no-port uart_txd 25
-set_io --warn-no-port us_trig 36
-set_io --warn-no-port us_echo 32
+set_io --warn-no-port us_trig 28
+set_io --warn-no-port us_echo 31
 set_io --warn-no-port pwm_mot1[1] 44
 set_io --warn-no-port pwm_mot1[0] 45
 set_io --warn-no-port pwm_mot2[1] 46
 set_io --warn-no-port pwm_mot2[0] 47
-set_io --warn-no-port quad1[1] 4
-set_io --warn-no-port quad1[0] 3
-set_io --warn-no-port quad2[1] 2
-set_io --warn-no-port quad2[0] 48
+set_io --warn-no-port quad1[1] 36
+set_io --warn-no-port quad1[0] 38
+set_io --warn-no-port quad2[1] 42
+set_io --warn-no-port quad2[0] 43
 set_frequency clk 12
