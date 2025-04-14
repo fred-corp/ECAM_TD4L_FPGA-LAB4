@@ -1,7 +1,23 @@
 # Variables
 PROJECT_NAME = Robot
 TOP_MODULE = top
-VHDL_FILES = rtl/top/top.vhd rtl/uart_protocol/uart_protocol.vhd rtl/config_regs/config_regs.vhd rtl/pwm_driver/pwm_driver.vhd open-logic/src/base/vhdl/olo_base_pkg_attribute.vhd open-logic/src/base/vhdl/olo_base_pkg_logic.vhd open-logic/src/base/vhdl/olo_base_pkg_math.vhd open-logic/src/base/vhdl/olo_base_pkg_array.vhd open-logic/src/base/vhdl/olo_base_strobe_gen.vhd open-logic/src/base/vhdl/olo_base_reset_gen.vhd open-logic/src/intf/vhdl/olo_intf_uart.vhd open-logic/src/intf/vhdl/olo_intf_sync.vhd # open-logic/src/base/vhdl/olo_base_fifo_sync.vhd open-logic/src/base/vhdl/olo_base_ram_sdp.vhd
+VHDL_FILES = \
+	rtl/top/top.vhd \
+	rtl/uart_protocol/uart_protocol.vhd \
+	rtl/config_regs/config_regs.vhd \
+	rtl/pwm_driver/pwm_driver.vhd \
+	rtl/distance_driver/distance_driver.vhd\
+	open-logic/src/base/vhdl/olo_base_pkg_attribute.vhd \
+	open-logic/src/base/vhdl/olo_base_pkg_logic.vhd \
+	open-logic/src/base/vhdl/olo_base_pkg_math.vhd \
+	open-logic/src/base/vhdl/olo_base_pkg_array.vhd \
+	open-logic/src/base/vhdl/olo_base_strobe_gen.vhd \
+	open-logic/src/base/vhdl/olo_base_reset_gen.vhd \
+	open-logic/src/intf/vhdl/olo_intf_uart.vhd \
+	open-logic/src/intf/vhdl/olo_intf_sync.vhd \
+	# open-logic/src/base/vhdl/olo_base_fifo_sync.vhd \
+	# open-logic/src/base/vhdl/olo_base_ram_sdp.vhd
+
 BUILD_DIR = build
 
 # FPGA specific variables
