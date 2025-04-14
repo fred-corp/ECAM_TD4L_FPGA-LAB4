@@ -51,13 +51,6 @@ architecture rtl of top is
   signal apb_pwdata  : std_logic_vector(15 downto 0);
   signal apb_prdata  : std_logic_vector(15 downto 0);
 
-  -- UART-APB
-  signal uart_apb_tx_valid : std_logic := '0';
-  signal uart_apb_tx_ready : std_logic;
-  signal uart_apb_tx_data  : std_logic_vector(7 downto 0);
-  signal uart_apb_rx_valid : std_logic := '0';
-  signal uart_apb_rx_data  : std_logic_vector(7 downto 0);
-
   -- LEDs
   signal led_out_r : std_logic := '0';
   signal led_out_g : std_logic := '0';
@@ -117,9 +110,9 @@ begin
     );
 
   -------- TO BE REMOVED DURING EXERCISES -----------------
-  led_out_r <= counter(counter'high);
-  led_out_g <= counter(counter'high);
-  led_out_b <= counter(counter'high);
+  -- led_out_r <= counter(counter'high);
+  -- led_out_g <= counter(counter'high);
+  -- led_out_b <= counter(counter'high);
 
   -- olo_base_fifo_sync_inst : entity work.olo_base_fifo_sync
   --   generic map(
@@ -145,6 +138,18 @@ begin
       if reset = '1' then
         counter <= (others => '0');
       end if;
+
+      if apb_pwrite = '1' then
+        if apb_paddr = x"00" then
+          led_out_r <= apb_pwdata(0);
+        elsif apb_paddr = x"02" then
+          led_out_g <= apb_pwdata(0);
+        elsif apb_paddr = x"04" then
+          led_out_b <= apb_pwdata(0);
+        end if;
+      else
+        apb_prdata <= x"0123";
+      end if;
     end if;
   end process;
   ----------------------------------------
@@ -157,4 +162,4 @@ begin
   led_b <= '0' when led_out_b = '1' else
     'Z';
 
-end rtl;
+end architecture rtl;

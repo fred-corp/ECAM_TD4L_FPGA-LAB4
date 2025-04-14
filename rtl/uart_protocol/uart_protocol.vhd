@@ -46,9 +46,14 @@ architecture rtl of uart_protocol is
   signal apb_data   : std_logic_vector(15 downto 0) := (others => '0');
   signal address    : std_logic_vector(7 downto 0)  := (others => '0');
   signal wr_data    : std_logic_vector(15 downto 0) := (others => '0');
+  signal tx_valid_i : std_logic                     := '0';
 
 begin
-  process (clk)
+
+  -- add comment later
+  tx_valid <= tx_valid_i;
+
+  main : process (clk)
   begin
     if rising_edge(clk) then
       if reset = '1' then
@@ -67,64 +72,70 @@ begin
             else
               state <= IDLE;
             end if;
-          else
-            state <= IDLE;
           end if;
         when WRITE_ADDRESS =>
+          address <= rx_data;
           if rx_valid = '1' then
-            address <= rx_data;
-            state   <= WRITE_DATA0;
+            state <= WRITE_DATA0;
           end if;
         when WRITE_DATA0 =>
+          wr_data(15 downto 8) <= rx_data;
           if rx_valid = '1' then
-            wr_data(15 downto 8) <= rx_data;
-            state                <= WRITE_DATA1;
+            state <= WRITE_DATA1;
           end if;
         when WRITE_DATA1 =>
+          wr_data(7 downto 0) <= rx_data;
           if rx_valid = '1' then
-            wr_data(7 downto 0) <= rx_data;
-            state               <= APB_SETUP;
+            state <= APB_SETUP;
           end if;
         when WRITE_ANSWER_HEADER =>
           tx_data  <= x"AA";
-          tx_valid <= '1';
-          if tx_ready = '1' then
-            tx_valid <= '0';
+          tx_valid_i <= '1';
+          if tx_ready = '1' and tx_valid_i = '1' then
+            tx_valid_i <= '0';
             state    <= WRITE_ANSWER_OK;
           end if;
         when WRITE_ANSWER_OK =>
           tx_data  <= x"00";
-          tx_valid <= '1';
-          if tx_ready = '1' then
-            tx_valid <= '0';
+          tx_valid_i <= '1';
+          if tx_ready = '1' and tx_valid_i = '1' then
+            tx_valid_i <= '0';
             state    <= IDLE;
           end if;
 
         when READ_ADDRESS =>
+          address <= rx_data;
           if rx_valid = '1' then
-            address <= rx_data;
-            state   <= APB_SETUP;
+            state <= APB_SETUP;
+          else
+            state <= READ_ADDRESS;
           end if;
         when READ_ANSWER_HEADER =>
           tx_data  <= x"55";
-          tx_valid <= '1';
-          if tx_ready = '1' then
-            tx_valid <= '0';
+          tx_valid_i <= '1';
+          if tx_ready = '1' and tx_valid_i = '1' then
+            tx_valid_i <= '0';
             state    <= READ_ANSWER_DATA0;
+          else
+            state <= READ_ANSWER_HEADER;
           end if;
         when READ_ANSWER_DATA0 =>
           tx_data  <= apb_data(15 downto 8);
-          tx_valid <= '1';
-          if tx_ready = '1' then
-            tx_valid <= '0';
+          tx_valid_i <= '1';
+          if tx_ready = '1' and tx_valid_i = '1' then
+            tx_valid_i <= '0';
             state    <= READ_ANSWER_DATA1;
+          else
+            state <= READ_ANSWER_DATA0;
           end if;
         when READ_ANSWER_DATA1 =>
           tx_data  <= apb_data(7 downto 0);
-          tx_valid <= '1';
-          if tx_ready = '1' then
-            tx_valid <= '0';
+          tx_valid_i <= '1';
+          if tx_ready = '1' and tx_valid_i = '1' then
+            tx_valid_i <= '0';
             state    <= IDLE;
+          else
+            state <= READ_ANSWER_DATA1;
           end if;
 
         when APB_SETUP =>
@@ -150,5 +161,5 @@ begin
       end case;
 
     end if;
-  end process;
+  end process main;
 end rtl;
