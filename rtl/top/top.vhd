@@ -11,57 +11,57 @@ use ieee.math_real.all;
 
 entity top is
   port (
-    clk  : in std_logic; --! System clock
-    rstn : in std_logic; --! System reset (active low)
+    clk  : in std_logic; --* System clock
+    rstn : in std_logic; --* System reset (active low)
 
-    uart_txd : out std_logic; --! UART transmitter
-    uart_rxd : in std_logic; --! UART receiver
+    uart_txd : out std_logic; --* UART transmitter
+    uart_rxd : in std_logic; --* UART receiver
 
-    us_trig : out std_logic; --! Ultrasound Trigger
-    us_echo : in std_logic := '0'; --! Ultrasound Echo
+    us_trig : out std_logic; --* Ultrasound Trigger
+    us_echo : in std_logic := '0'; --* Ultrasound Echo
 
-    quad1 : in std_logic_vector(1 downto 0) := (others => '0'); --! Quadrature Encoder 1
-    quad2 : in std_logic_vector(1 downto 0) := (others => '0'); --! Quadrature Encoder 2
+    quad1 : in std_logic_vector(1 downto 0) := (others => '0'); --* Quadrature Encoder 1
+    quad2 : in std_logic_vector(1 downto 0) := (others => '0'); --* Quadrature Encoder 2
 
-    pwm_mot1 : out std_logic_vector(1 downto 0); --! Motor 1 control
-    pwm_mot2 : out std_logic_vector(1 downto 0); --! Motor 2 control
+    pwm_mot1 : out std_logic_vector(1 downto 0); --* Motor 1 control
+    pwm_mot2 : out std_logic_vector(1 downto 0); --* Motor 2 control
 
-    led_r : out std_logic; --! Red LED
-    led_g : out std_logic; --! Green LED
-    led_b : out std_logic --! Blue LED
+    led_r : out std_logic; --* Red LED
+    led_g : out std_logic; --* Green LED
+    led_b : out std_logic --* Blue LED
   );
 end entity top;
 
 architecture rtl of top is
   -- Reset
-  signal reset : std_logic; --! Reset signal (active high)
+  signal reset : std_logic; --* Reset signal (active high)
 
   -- UART
-  signal uart_tx_valid : std_logic := '0'; --! UART transmitter valid
-  signal uart_tx_ready : std_logic; --! UART transmitter ready
-  signal uart_tx_data  : std_logic_vector(7 downto 0); --! UART transmitter data
-  signal uart_rx_valid : std_logic := '0'; --! UART receiver valid
-  signal uart_rx_data  : std_logic_vector(7 downto 0); --! UART receiver data
+  signal uart_tx_valid : std_logic := '0'; --* UART transmitter valid
+  signal uart_tx_ready : std_logic; --* UART transmitter ready
+  signal uart_tx_data  : std_logic_vector(7 downto 0); --* UART transmitter data
+  signal uart_rx_valid : std_logic := '0'; --* UART receiver valid
+  signal uart_rx_data  : std_logic_vector(7 downto 0); --* UART receiver data
 
   -- APB
-  signal apb_paddr   : std_logic_vector(7 downto 0); --! APB address
-  signal apb_psel    : std_logic; --! APB select
-  signal apb_penable : std_logic; --! APB enable
-  signal apb_pwrite  : std_logic; --! APB write
-  signal apb_pwdata  : std_logic_vector(15 downto 0); --! APB write data
-  signal apb_prdata  : std_logic_vector(15 downto 0); --! APB read data
+  signal apb_paddr   : std_logic_vector(7 downto 0); --* APB address
+  signal apb_psel    : std_logic; --* APB select
+  signal apb_penable : std_logic; --* APB enable
+  signal apb_pwrite  : std_logic; --* APB write
+  signal apb_pwdata  : std_logic_vector(15 downto 0); --* APB write data
+  signal apb_prdata  : std_logic_vector(15 downto 0); --* APB read data
 
   -- LEDs
-  signal led_out_r : std_logic := '0'; --! Red LED output signal
-  signal led_out_g : std_logic := '0'; --! Green LED output signal
-  signal led_out_b : std_logic := '0'; --! Blue LED output signal
+  signal led_out_r : std_logic := '0'; --* Red LED output signal
+  signal led_out_g : std_logic := '0'; --* Green LED output signal
+  signal led_out_b : std_logic := '0'; --* Blue LED output signal
 
   -- Motor PWM
-  signal mot1_pwm : std_logic_vector(15 downto 0); --! Motor 1 PWM data
-  signal mot2_pwm : std_logic_vector(15 downto 0); --! Motor 2 PWM data
+  signal mot1_pwm : std_logic_vector(15 downto 0); --* Motor 1 PWM data
+  signal mot2_pwm : std_logic_vector(15 downto 0); --* Motor 2 PWM data
 
   -- Counter
-  signal counter : unsigned(23 downto 0) := (others => '0'); --! Counter for LED blinking
+  signal counter : unsigned(23 downto 0) := (others => '0'); --* Counter for LED blinking
 
 begin
   -- *** Reset resynchronization ***

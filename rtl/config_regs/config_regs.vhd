@@ -11,24 +11,24 @@ use ieee.math_real.all;
 
 entity config_regs is
     port (
-        clk   : in std_logic; --! Main clock
-        reset  : in std_logic; --! Reset signal (active high)
+        clk   : in std_logic; --* Main clock
+        reset  : in std_logic; --* Reset signal (active high)
 
         -- APB interface
-        s_paddr : in std_logic_vector(7 downto 0); --! APB address
-        s_psel : in std_logic; --! APB select
-        s_penable : in std_logic; --! APB enable
-        s_pwrite : in std_logic; --! APB write
-        s_pwdata : in std_logic_vector(15 downto 0); --! APB write data
-        s_prdata : out std_logic_vector(15 downto 0); --! APB read data
+        s_paddr : in std_logic_vector(7 downto 0); --* APB address
+        s_psel : in std_logic; --* APB select
+        s_penable : in std_logic; --* APB enable
+        s_pwrite : in std_logic; --* APB write
+        s_pwdata : in std_logic_vector(15 downto 0); --* APB write data
+        s_prdata : out std_logic_vector(15 downto 0); --* APB read data
 
         -- Outputs
-        led_r : out std_logic; --! Red LED
-        led_g : out std_logic; --! Green LED
-        led_b : out std_logic; --! Blue LED
+        led_r : out std_logic; --* Red LED
+        led_g : out std_logic; --* Green LED
+        led_b : out std_logic; --* Blue LED
 
-        mot1_pwm : out std_logic_vector(15 downto 0); --! Motor 1 PWM data
-        mot2_pwm : out std_logic_vector(15 downto 0) --! Motor 2 PWM data
+        mot1_pwm : out std_logic_vector(15 downto 0); --* Motor 1 PWM data
+        mot2_pwm : out std_logic_vector(15 downto 0) --* Motor 2 PWM data
     );
 end entity config_regs;
 
