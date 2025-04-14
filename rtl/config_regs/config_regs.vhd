@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 -- ECAM Brussels
--- FPGA lab: Robot project
--- Author:
--- File content: Configuration registers
+-- FPGA lab : Robot project
+-- Author : Frédéric Druppel
+-- File content : Configuration registers
 ---------------------------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;

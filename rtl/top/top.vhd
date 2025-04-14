@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 -- ECAM Brussels
--- FPGA lab: Robot project
--- Author:
--- File content: Robot project toplevel
+-- FPGA lab : Robot project
+-- Author : Frédéric Druppel
+-- File content : Robot project toplevel
 ---------------------------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;

@@ -1,8 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 -- ECAM Brussels
--- FPGA lab: Robot project
--- Author:
--- File content: UART protocol handler
+-- FPGA lab : Robot project
+-- Author : Frédéric Druppel
+-- File content : UART protocol handler
 ---------------------------------------------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
