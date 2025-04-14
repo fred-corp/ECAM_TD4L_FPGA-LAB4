@@ -109,6 +109,23 @@ begin
       m_prdata  => apb_prdata
     );
 
+  -- *** Config Registers ***
+  config_registers_inst : entity work.config_regs
+    port map
+    (
+      clk       => Clk,
+      reset     => reset,
+      led_r => led_out_r,
+      led_g => led_out_g,
+      led_b => led_out_b,
+      s_paddr   => apb_paddr,
+      s_psel    => apb_psel,
+      s_penable => apb_penable,
+      s_pwrite  => apb_pwrite,
+      s_pwdata  => apb_pwdata,
+      s_prdata  => apb_prdata
+    );
+
   -------- TO BE REMOVED DURING EXERCISES -----------------
   -- led_out_r <= counter(counter'high);
   -- led_out_g <= counter(counter'high);
@@ -131,27 +148,15 @@ begin
   --     Out_Ready => uart_tx_ready
   --   );
 
-  process (clk)
+  main : process (clk)
   begin
     if rising_edge(clk) then
       counter <= counter + 1;
       if reset = '1' then
         counter <= (others => '0');
       end if;
-
-      if apb_pwrite = '1' then
-        if apb_paddr = x"00" then
-          led_out_r <= apb_pwdata(0);
-        elsif apb_paddr = x"02" then
-          led_out_g <= apb_pwdata(0);
-        elsif apb_paddr = x"04" then
-          led_out_b <= apb_pwdata(0);
-        end if;
-      else
-        apb_prdata <= x"0123";
-      end if;
     end if;
-  end process;
+  end process main;
   ----------------------------------------
 
   -- *** LED drivers ***
