@@ -60,6 +60,9 @@ architecture rtl of top is
   signal mot1_pwm : std_logic_vector(15 downto 0); --* Motor 1 PWM data
   signal mot2_pwm : std_logic_vector(15 downto 0); --* Motor 2 PWM data
 
+  -- Distance
+  signal echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
+
   -- Counter
   signal counter : unsigned(23 downto 0) := (others => '0'); --* Counter for LED blinking
 
@@ -131,7 +134,8 @@ begin
       led_g     => led_out_g,
       led_b     => led_out_b,
       mot1_pwm  => mot1_pwm,
-      mot2_pwm  => mot2_pwm
+      mot2_pwm  => mot2_pwm,
+      echo_cycles => echo_cycles
     );
 
   -- *** PWM drivers ***
@@ -160,6 +164,23 @@ begin
       pwm_data  => mot2_pwm,
       pwm_out_1 => pwm_mot2(0),
       pwm_out_2 => pwm_mot2(1)
+    );
+
+  -- *** Distance driver ***
+  distance_driver_inst : entity work.distance_driver
+    generic map(
+      clk_freq  => 12.0e6,
+      ms_period => 100.0,
+      us_width  => 10.0
+    )
+    port map
+    (
+      clk       => Clk,
+      reset     => reset,
+      trig_pin  => us_trig,
+      echo_pin  => us_echo,
+      -- distance   => open,
+      echo_cycles => echo_cycles
     );
 
   main : process (clk)

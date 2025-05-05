@@ -3,7 +3,7 @@ import serial
 import struct
 
 class PicoIce:
-    def __init__(self, portName="/dev/tty.usbmodem103"):
+    def __init__(self, portName="/dev/tty.usbmodem2103"):
         self.ser = serial.Serial(portName, 230400, timeout=0.5)
 
     def write(self, addr, data):
@@ -42,3 +42,7 @@ if __name__ == "__main__":
     ice.write(0x2, 1)
     ice.write(0x4, 0)
     ice.write(0x6, 0b0000000000111111)
+    cycles = ice.read(0x0)
+    print(cycles)
+    distance = cycles * (1/12000000) * 171 * 100
+    print(f"Distance : {distance} cm")
