@@ -5,3 +5,16 @@ venv
 vunit_out
 impl_1
 build
+
+# VUnit-dev
+.generated_files/
+build/
+dist/
+nbproject/
+Makefile*
+Package-*
+private/
+cmake/**/CMake*
+cmake/**/.generated/*
+!cmake/**/user.cmake
+_build/
