@@ -24,11 +24,15 @@ VHDL_LIB_FILES = \
 
 BUILD_DIR = build
 
+TESTBENCH_DIR = sim/top/
+
 # FPGA specific variables
 FPGA_FAMILY = ice40
 FPGA_DEVICE = up5k
 FPGA_PACKAGE = sg48
 FPGA_PINMAP = pinmap.pcf
+
+SHELL := /bin/zsh
 
 all : bitstream flash
 
@@ -43,6 +47,13 @@ bitstream:
 flash:
 	@echo "Flashing bitstream"
 	dfu-util --alt 0 --download $(BUILD_DIR)/$(PROJECT_NAME)_bitstream.bin --reset;
+
+testbench:
+	@echo "Running testbench"
+	cd ${TESTBENCH_DIR} && \
+	source ./venv/bin/activate && \
+	python3 run.py --gui --viewer surfer
+	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\""
 
 clean:
 	@echo "Cleaning up build dir"
