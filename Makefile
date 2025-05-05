@@ -25,6 +25,7 @@ VHDL_LIB_FILES = \
 BUILD_DIR = build
 
 TESTBENCH_DIR = sim/top/
+TESTBENCH_VIEWER = surfer
 
 # FPGA specific variables
 FPGA_FAMILY = ice40
@@ -52,7 +53,7 @@ testbench:
 	@echo "Running testbench"
 	cd ${TESTBENCH_DIR} && \
 	source ./venv/bin/activate && \
-	python3 run.py --gui --viewer surfer
+	python3 run.py --gui --viewer ${TESTBENCH_VIEWER} --viewer-fmt=vcd
 	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\""
 
 clean:
