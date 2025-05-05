@@ -9,6 +9,7 @@ VHDL_FILES = \
 	rtl/config_regs/config_regs.vhd \
 	rtl/pwm_driver/pwm_driver.vhd \
 	rtl/distance_driver/distance_driver.vhd \
+	rtl/ramp_generator/ramp_generator.vhd \
 
 VHDL_LIB_FILES = \
 	open-logic/src/base/vhdl/olo_base_pkg_attribute.vhd \

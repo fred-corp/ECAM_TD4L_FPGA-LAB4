@@ -63,6 +63,10 @@ architecture rtl of top is
   -- Distance
   signal echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
 
+  -- Ramp generator
+  signal ramp_execute : std_logic := '0'; --* Ramp generator execute signal
+  signal ramp_speed_out : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp generator output speed
+
   -- Counter
   signal counter : unsigned(23 downto 0) := (others => '0'); --* Counter for LED blinking
 
@@ -135,7 +139,9 @@ begin
       led_b     => led_out_b,
       mot1_pwm  => mot1_pwm,
       mot2_pwm  => mot2_pwm,
-      echo_cycles => echo_cycles
+      echo_cycles => echo_cycles,
+      ramp_execute => ramp_execute,
+      ramp_speed_out => ramp_speed_out
     );
 
   -- *** PWM drivers ***
@@ -181,6 +187,25 @@ begin
       echo_pin  => us_echo,
       -- distance   => open,
       echo_cycles => echo_cycles
+    );
+
+  -- *** Ramp generator ***
+  ramp_gen_inst : entity work.ramp_generator
+    generic map (
+      clk_freq  => 12_000_000
+    )
+    port map
+    (
+      clk       => Clk,
+      reset     => reset,
+      
+      time_delay      => std_logic_vector(to_unsigned(1, 16)),
+      target_speed    => std_logic_vector(to_unsigned(100, 16)),
+      fast_time       => std_logic_vector(to_unsigned(50, 16)),
+      speed_increment => std_logic_vector(to_unsigned(1, 16)),
+      speed_decrement => std_logic_vector(to_unsigned(1, 16)),
+      execute         => ramp_execute,
+      speed_out       => ramp_speed_out
     );
 
   main : process (clk)

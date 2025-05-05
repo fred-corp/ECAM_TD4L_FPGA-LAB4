@@ -30,8 +30,11 @@ entity config_regs is
         mot1_pwm : out std_logic_vector(15 downto 0); --* Motor 1 PWM data
         mot2_pwm : out std_logic_vector(15 downto 0); --* Motor 2 PWM data
 
+        ramp_execute : out std_logic; --* Ramp execute signal
+
         -- Inputs
-        echo_cycles : in unsigned(15 downto 0) --* Duration of the echo signal
+        echo_cycles : in unsigned(15 downto 0); --* Duration of the echo signal
+        ramp_speed_out : in std_logic_vector(15 downto 0) --* Ramp speed output
     );
 end entity config_regs;
 
@@ -58,13 +61,22 @@ begin
               mot1_pwm <= s_pwdata;
             elsif s_paddr = x"08" then
               mot2_pwm <= s_pwdata;
+
+            -- Ramp registers
+            elsif s_paddr = x"32" then
+              ramp_execute <= s_pwdata(0);
             end if;
           end if;
         else
           if s_penable = '0' then
             -- Read registers
+            -- Echo cycles
             if s_paddr = x"00" then
               s_prdata <= std_logic_vector(echo_cycles);
+            
+            -- Ramp speed
+            elsif s_paddr = x"02" then
+              s_prdata <= ramp_speed_out;
             else
               s_prdata <= x"0123";
             end if;

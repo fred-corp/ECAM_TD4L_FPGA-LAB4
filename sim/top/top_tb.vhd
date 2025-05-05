@@ -51,22 +51,25 @@ begin
 
     main : process
     begin
-        test_runner_setup(runner, runner_cfg);
-        for i in 0 to 20 loop
-          push_stream(net, uart_master_stream, X"55");
-          wait for 200 us;
-          push_stream(net, uart_master_stream, X"AA");
-          wait for 500 us;
-          push_stream(net, uart_master_stream, X"55");
-          wait for 200 us;
-          push_stream(net, uart_master_stream, X"00");
-          wait for 500 us;
-          push_stream(net, uart_master_stream, X"55");
-          wait for 200 us;
-          push_stream(net, uart_master_stream, X"00");
-          wait for 500 us;
-        end loop;
-        -- wait for 200 ms;
-        test_runner_cleanup(runner); -- Simulation ends here
+      test_runner_setup(runner, runner_cfg);
+      push_stream(net, uart_master_stream, X"AA");
+      wait for 200 us;
+      push_stream(net, uart_master_stream, X"32");
+      wait for 200 us;
+      push_stream(net, uart_master_stream, X"00");
+      wait for 200 us;
+      push_stream(net, uart_master_stream, X"01");
+      wait for 500 us;
+      push_stream(net, uart_master_stream, X"AA");
+      wait for 200 us;
+      push_stream(net, uart_master_stream, X"32");
+      wait for 200 us;
+      push_stream(net, uart_master_stream, X"00");
+      wait for 200 us;
+      push_stream(net, uart_master_stream, X"00");
+      wait for 500 us;
+      
+      wait for 500 ms;
+      test_runner_cleanup(runner); -- Simulation ends here
     end process;
 end architecture;
