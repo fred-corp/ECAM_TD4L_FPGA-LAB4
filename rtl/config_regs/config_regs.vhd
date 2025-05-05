@@ -28,7 +28,10 @@ entity config_regs is
         led_b : out std_logic; --* Blue LED
 
         mot1_pwm : out std_logic_vector(15 downto 0); --* Motor 1 PWM data
-        mot2_pwm : out std_logic_vector(15 downto 0) --* Motor 2 PWM data
+        mot2_pwm : out std_logic_vector(15 downto 0); --* Motor 2 PWM data
+
+        -- Inputs
+        echo_cycles : in unsigned(15 downto 0) --* Duration of the echo signal
     );
 end entity config_regs;
 
@@ -38,23 +41,35 @@ begin
   main : process (clk)
   begin
     if rising_edge(clk) then
-      if s_pwrite = '1' then
-        -- LED registers
-        if s_paddr = x"00" then
-          led_r <= s_pwdata(0);
-        elsif s_paddr = x"02" then
-          led_g <= s_pwdata(0);
-        elsif s_paddr = x"04" then
-          led_b <= s_pwdata(0);
+      if s_psel = '1' then
+        if s_pwrite = '1' then
+          if s_penable = '1' then 
+            -- Write registers
+            -- LED registers
+            if s_paddr = x"00" then
+              led_r <= s_pwdata(0);
+            elsif s_paddr = x"02" then
+              led_g <= s_pwdata(0);
+            elsif s_paddr = x"04" then
+              led_b <= s_pwdata(0);
 
-        -- Motor PWM registers
-        elsif s_paddr = x"06" then
-          mot1_pwm <= s_pwdata;
-        elsif s_paddr = x"08" then
-          mot2_pwm <= s_pwdata;
+            -- Motor PWM registers
+            elsif s_paddr = x"06" then
+              mot1_pwm <= s_pwdata;
+            elsif s_paddr = x"08" then
+              mot2_pwm <= s_pwdata;
+            end if;
+          end if;
+        else
+          if s_penable = '0' then
+            -- Read registers
+            if s_paddr = x"00" then
+              s_prdata <= std_logic_vector(echo_cycles);
+            else
+              s_prdata <= x"0123";
+            end if;
+          end if;
         end if;
-      else
-        s_prdata <= x"0123";
       end if;
     end if;
     end process main;
