@@ -1,3 +1,5 @@
+import sys
+sys.path.append("~/Documents/ECAM/2024-2025/1MEO/Q2/TD4L_SoC/FPGA_2025/Labs/lab4-8_robot/sim/top/vunit")
 from vunit import VUnit
 
 # Create VUnit instance by parsing command line arguments

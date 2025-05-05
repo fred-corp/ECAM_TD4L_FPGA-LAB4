@@ -22,7 +22,7 @@ architecture tb of top_tb is
     signal led_b : std_logic;
     signal debug : std_logic;
 
-    constant uart_master_bfm : uart_master_t := new_uart_master(initial_baud_rate => 115200);
+    constant uart_master_bfm : uart_master_t := new_uart_master(initial_baud_rate => 230400);
     constant uart_master_stream : stream_master_t := as_stream(uart_master_bfm);
 
 begin
@@ -34,7 +34,10 @@ begin
         uart_rxd => uart_rxd,
         led_r => led_r,
         led_g => led_g,
-        led_b => led_b
+        led_b => led_b,
+        quad1 => (others => '0'),
+        quad2 => (others => '0'),
+        us_echo => '1'
     );
 
     uart_master_bfm_inst : entity vunit_lib.uart_master
@@ -50,9 +53,20 @@ begin
     begin
         test_runner_setup(runner, runner_cfg);
         for i in 0 to 20 loop
-            push_stream(net, uart_master_stream, X"55");
-            wait for 200 us;
+          push_stream(net, uart_master_stream, X"55");
+          wait for 200 us;
+          push_stream(net, uart_master_stream, X"AA");
+          wait for 500 us;
+          push_stream(net, uart_master_stream, X"55");
+          wait for 200 us;
+          push_stream(net, uart_master_stream, X"00");
+          wait for 500 us;
+          push_stream(net, uart_master_stream, X"55");
+          wait for 200 us;
+          push_stream(net, uart_master_stream, X"00");
+          wait for 500 us;
         end loop;
+        -- wait for 200 ms;
         test_runner_cleanup(runner); -- Simulation ends here
     end process;
 end architecture;
