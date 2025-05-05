@@ -147,9 +147,9 @@ begin
           state     <= APB_EXECUTE;
         when APB_EXECUTE =>
           m_penable <= '1';
-          apb_data  <= m_prdata;
           state     <= APB_DONE;
         when APB_DONE =>
+          apb_data  <= m_prdata;
           m_psel <= '0';
           if write_flag = '1' then
             state <= WRITE_ANSWER_HEADER;
