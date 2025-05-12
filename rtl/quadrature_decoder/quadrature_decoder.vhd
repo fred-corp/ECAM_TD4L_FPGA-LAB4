@@ -35,11 +35,12 @@ architecture behavioral of quadrature_decoder is
   signal s_quadA_delayed   : std_logic_vector(2 downto 0) := (others => '0');
   signal s_quadB_delayed   : std_logic_vector(2 downto 0) := (others => '0');
 
-  signal step      : std_logic                          := '0'; --* Step signal
-  signal direction : std_logic                          := '0'; --* Direction of rotation
-  signal clk_count : unsigned(clk_count_width downto 0) := (others => '0'); --* Clock count
-  signal count     : unsigned(14 downto 0)              := (others => '0'); --* Count of pulses
-  signal s_count   : unsigned(14 downto 0)              := (others => '0'); --* Count of pulses (signal)
+  signal step        : std_logic                          := '0'; --* Step signal
+  signal direction   : std_logic                          := '0'; --* Direction of rotation
+  signal clk_count   : unsigned(clk_count_width downto 0) := (others => '0'); --* Clock count
+  signal count       : unsigned(14 downto 0)              := (others => '0'); --* Count of pulses
+  signal s_count     : unsigned(14 downto 0)              := (others => '0'); --* Count of pulses (signal)
+  signal s_direction : std_logic                          := '0'; --* Direction of rotation (signal)
 
 begin
   main : process (clk)
@@ -55,7 +56,8 @@ begin
 
       -- Count pulses
       if step = '1' then
-        count <= count + 1;
+        count       <= count + 1;
+        s_direction <= direction;
       end if;
 
       -- Calculate speed at 10Hz
@@ -82,6 +84,6 @@ begin
     end if;
   end process;
 
-  count_out <= direction & std_logic_vector(s_count(14 downto 0));
+  count_out <= s_direction & std_logic_vector(s_count(14 downto 0));
 
 end architecture;

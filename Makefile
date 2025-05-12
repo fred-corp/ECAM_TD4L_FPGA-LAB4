@@ -52,6 +52,8 @@ flash:
 	@echo "Flashing bitstream"
 	dfu-util --alt 0 --download $(BUILD_DIR)/$(PROJECT_NAME)_bitstream.bin --reset;
 
+testbench : testbench_pi_controller testbench_quadrature_decoder testbench_top
+
 testbench_top:
 	@echo "Running top module testbench"
 	cd ${TESTBENCH_DIR} && \
@@ -66,7 +68,15 @@ testbench_pi_controller:
 	source ./venv/bin/activate && \
 	cd ./pi_controller && \
 	python3 run.py --gui --viewer ${TESTBENCH_VIEWER} --viewer-fmt=vcd
-	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\"/top"
+	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\"/pi_controller"
+
+testbench_quadrature_decoder:
+	@echo "Running top module testbench"
+	cd ${TESTBENCH_DIR} && \
+	source ./venv/bin/activate && \
+	cd ./quadrature_decoder && \
+	python3 run.py --gui --viewer ${TESTBENCH_VIEWER} --viewer-fmt=vcd
+	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\"/quadrature_decoder"
 
 clean:
 	@echo "Cleaning up build dir"
