@@ -61,11 +61,18 @@ architecture rtl of top is
   signal mot2_pwm : std_logic_vector(15 downto 0); --* Motor 2 PWM data
 
   -- Distance
-  signal echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
+  signal s_echo_valid : std_logic := '0'; --* Echo signal valid flag
+  signal s_echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
 
   -- Ramp generator
   signal ramp_execute : std_logic := '0'; --* Ramp generator execute signal
   signal ramp_speed_out : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp generator output speed
+
+  -- Quadrature encoders
+  signal quad1_valid : std_logic := '0'; --* Quadrature Encoder 1 valid
+  signal quad1_count : std_logic_vector(15 downto 0) := (others => '0'); --* Quadrature Encoder 1 data
+  signal quad2_valid : std_logic := '0'; --* Quadrature Encoder 2 valid
+  signal quad2_count : std_logic_vector(15 downto 0) := (others => '0'); --* Quadrature Encoder 2 data
 
   -- Counter
   signal counter : unsigned(23 downto 0) := (others => '0'); --* Counter for LED blinking
@@ -139,9 +146,14 @@ begin
       led_b     => led_out_b,
       mot1_pwm  => mot1_pwm,
       mot2_pwm  => mot2_pwm,
-      echo_cycles => echo_cycles,
+      echo_valid => s_echo_valid,
+      echo_cycles => s_echo_cycles,
       ramp_execute => ramp_execute,
-      ramp_speed_out => ramp_speed_out
+      ramp_speed_out => ramp_speed_out,
+      quad1_valid => quad1_valid,
+      quad1_count => quad1_count,
+      quad2_valid => quad2_valid,
+      quad2_count => quad2_count
     );
 
   -- *** PWM drivers ***
@@ -185,8 +197,8 @@ begin
       reset     => reset,
       trig_pin  => us_trig,
       echo_pin  => us_echo,
-      -- distance   => open,
-      echo_cycles => echo_cycles
+      echo_valid  => s_echo_valid,
+      echo_cycles => s_echo_cycles
     );
 
   -- *** Ramp generator ***
@@ -219,8 +231,8 @@ begin
       clk         => Clk,
       reset       => reset,
       quad        => quad1,
-      count_valid => open,
-      count_out   => open
+      count_valid => quad1_valid,
+      count_out   => quad1_count
     );
 
   quad_decoder2_inst : entity work.quadrature_decoder
@@ -233,8 +245,8 @@ begin
       clk         => Clk,
       reset       => reset,
       quad        => quad2,
-      count_valid => open,
-      count_out   => open
+      count_valid => quad2_valid,
+      count_out   => quad2_count
     );
 
   main : process (clk)

@@ -22,6 +22,7 @@ entity distance_driver is
     trig_pin : out std_logic; --* Trigger pin for the ultrasonic sensor
     echo_pin : in std_logic; --* Echo pin for the ultrasonic sensor
     -- distance : out std_logic_vector(15 downto 0) --* Distance measurement output
+    echo_valid  : out std_logic := '0'; --* Echo signal valid flag
     echo_cycles : out unsigned(15 downto 0) := (others => '0') --* Duration of the echo signal
   );
 end entity;
@@ -35,6 +36,7 @@ architecture rtl of distance_driver is
 
   signal counter       : unsigned(counter_width - 1 downto 0) := (others => '0'); --* Counter for timing
   signal echo_duration : unsigned(15 downto 0)                := (others => '0'); --* Duration of echo signal
+  signal s_echo_cycles : unsigned(15 downto 0)                := (others => '0'); --* Duration of the echo signal
   -- signal distance_mm   : unsigned(15 downto 0)                := (others => '0'); --* Distance in mm
 
   signal echo_previous : std_logic := '0'; --* Previous state of the echo signal
@@ -64,8 +66,11 @@ begin
         end if;
         
         if echo_pin = '0' and echo_previous = '1' then
-          echo_cycles <= echo_duration; -- Store the duration of the echo signal
+          s_echo_cycles <= echo_duration; -- Store the duration of the echo signal
           echo_duration <= (others => '0'); -- Reset the duration counter
+          echo_valid <= '1'; -- Set the echo valid flag
+        else 
+          echo_valid <= '0'; -- Clear the echo valid flag
         end if;
 
         if counter = integer(trigger_delay) then
@@ -75,4 +80,7 @@ begin
     end if;
 
   end process main;
+
+  -- Assign the echo_cycles output
+  echo_cycles <= s_echo_cycles;
 end architecture rtl;
