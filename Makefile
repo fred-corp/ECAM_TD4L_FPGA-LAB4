@@ -11,6 +11,7 @@ VHDL_FILES = \
 	rtl/distance_driver/distance_driver.vhd \
 	rtl/ramp_generator/ramp_generator.vhd \
 	rtl/quadrature_decoder/quadrature_decoder.vhd \
+	rtl/pi_controller/pi_controller.vhd \
 
 VHDL_LIB_FILES = \
 	open-logic/src/base/vhdl/olo_base_pkg_attribute.vhd \
@@ -26,7 +27,7 @@ VHDL_LIB_FILES = \
 
 BUILD_DIR = build
 
-TESTBENCH_DIR = sim/top/
+TESTBENCH_DIR = sim
 TESTBENCH_VIEWER = surfer
 
 # FPGA specific variables
@@ -51,12 +52,21 @@ flash:
 	@echo "Flashing bitstream"
 	dfu-util --alt 0 --download $(BUILD_DIR)/$(PROJECT_NAME)_bitstream.bin --reset;
 
-testbench:
-	@echo "Running testbench"
+testbench_top:
+	@echo "Running top module testbench"
 	cd ${TESTBENCH_DIR} && \
 	source ./venv/bin/activate && \
+	cd ./top && \
 	python3 run.py --gui --viewer ${TESTBENCH_VIEWER} --viewer-fmt=vcd
-	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\""
+	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\"/top"
+
+testbench_pi_controller:
+	@echo "Running top module testbench"
+	cd ${TESTBENCH_DIR} && \
+	source ./venv/bin/activate && \
+	cd ./pi_controller && \
+	python3 run.py --gui --viewer ${TESTBENCH_VIEWER} --viewer-fmt=vcd
+	@echo "Done - testbench location : \"$(TESTBENCH_DIR)\"/top"
 
 clean:
 	@echo "Cleaning up build dir"
