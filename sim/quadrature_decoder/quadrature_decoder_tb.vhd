@@ -34,7 +34,7 @@ begin
   -- DUT instantiation
   uut : entity work.quadrature_decoder
     generic map(
-      clk_freq => 12_000_000,
+      clk_freq => 12000000,
       ppr      => 10
     )
     port map

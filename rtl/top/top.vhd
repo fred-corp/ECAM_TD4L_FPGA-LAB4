@@ -61,17 +61,17 @@ architecture rtl of top is
   signal mot2_pwm : std_logic_vector(15 downto 0); --* Motor 2 PWM data
 
   -- Distance
-  signal s_echo_valid : std_logic := '0'; --* Echo signal valid flag
+  signal s_echo_valid  : std_logic             := '0'; --* Echo signal valid flag
   signal s_echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
 
   -- Ramp generator
-  signal ramp_execute : std_logic := '0'; --* Ramp generator execute signal
+  signal ramp_execute   : std_logic                     := '0'; --* Ramp generator execute signal
   signal ramp_speed_out : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp generator output speed
 
   -- Quadrature encoders
-  signal quad1_valid : std_logic := '0'; --* Quadrature Encoder 1 valid
+  signal quad1_valid : std_logic                     := '0'; --* Quadrature Encoder 1 valid
   signal quad1_count : std_logic_vector(15 downto 0) := (others => '0'); --* Quadrature Encoder 1 data
-  signal quad2_valid : std_logic := '0'; --* Quadrature Encoder 2 valid
+  signal quad2_valid : std_logic                     := '0'; --* Quadrature Encoder 2 valid
   signal quad2_count : std_logic_vector(15 downto 0) := (others => '0'); --* Quadrature Encoder 2 data
 
   -- Counter
@@ -133,27 +133,27 @@ begin
   config_registers_inst : entity work.config_regs
     port map
     (
-      clk       => Clk,
-      reset     => reset,
-      s_paddr   => apb_paddr,
-      s_psel    => apb_psel,
-      s_penable => apb_penable,
-      s_pwrite  => apb_pwrite,
-      s_pwdata  => apb_pwdata,
-      s_prdata  => apb_prdata,
-      led_r     => led_out_r,
-      led_g     => led_out_g,
-      led_b     => led_out_b,
-      mot1_pwm  => mot1_pwm,
-      mot2_pwm  => mot2_pwm,
-      echo_valid => s_echo_valid,
-      echo_cycles => s_echo_cycles,
-      ramp_execute => ramp_execute,
+      clk            => Clk,
+      reset          => reset,
+      s_paddr        => apb_paddr,
+      s_psel         => apb_psel,
+      s_penable      => apb_penable,
+      s_pwrite       => apb_pwrite,
+      s_pwdata       => apb_pwdata,
+      s_prdata       => apb_prdata,
+      led_r          => led_out_r,
+      led_g          => led_out_g,
+      led_b          => led_out_b,
+      mot1_pwm       => mot1_pwm,
+      mot2_pwm       => mot2_pwm,
+      echo_valid     => s_echo_valid,
+      echo_cycles    => s_echo_cycles,
+      ramp_execute   => ramp_execute,
       ramp_speed_out => ramp_speed_out,
-      quad1_valid => quad1_valid,
-      quad1_count => quad1_count,
-      quad2_valid => quad2_valid,
-      quad2_count => quad2_count
+      quad1_valid    => quad1_valid,
+      quad1_count    => quad1_count,
+      quad2_valid    => quad2_valid,
+      quad2_count    => quad2_count
     );
 
   -- *** PWM drivers ***
@@ -193,24 +193,24 @@ begin
     )
     port map
     (
-      clk       => Clk,
-      reset     => reset,
-      trig_pin  => us_trig,
-      echo_pin  => us_echo,
+      clk         => Clk,
+      reset       => reset,
+      trig_pin    => us_trig,
+      echo_pin    => us_echo,
       echo_valid  => s_echo_valid,
       echo_cycles => s_echo_cycles
     );
 
   -- *** Ramp generator ***
   ramp_gen_inst : entity work.ramp_generator
-    generic map (
-      clk_freq  => 12_000_000
+    generic map(
+      clk_freq => 12000000
     )
     port map
     (
-      clk       => Clk,
-      reset     => reset,
-      
+      clk   => Clk,
+      reset => reset,
+
       time_delay      => std_logic_vector(to_unsigned(1, 16)),
       target_speed    => std_logic_vector(to_unsigned(100, 16)),
       fast_time       => std_logic_vector(to_unsigned(50, 16)),
@@ -220,7 +220,7 @@ begin
       speed_out       => ramp_speed_out
     );
 
-    -- *** PI Controller ***
+  -- *** PI Controller ***
   pi_controller_inst : entity work.pi_controller
     generic map(
       clk_freq    => 12.0e6,
@@ -231,20 +231,20 @@ begin
     )
     port map
     (
-      clk       => Clk,
-      reset     => reset,
-      auto      => '1',
-      Kp        => x"0001",
-      Ki        => x"0001",
-      setpoint  => x"0000",
-      pv        => x"0000",
-      output    => open
+      clk      => Clk,
+      reset    => reset,
+      auto     => '1',
+      Kp       => x"0001",
+      Ki       => x"0001",
+      setpoint => x"0000",
+      pv       => x"0000",
+      output   => open
     );
 
   -- *** Quadrature decoders ***
   quad_decoder1_inst : entity work.quadrature_decoder
     generic map(
-      clk_freq => 12_000_000,
+      clk_freq => 12000000,
       ppr      => 1024
     )
     port map
@@ -258,7 +258,7 @@ begin
 
   quad_decoder2_inst : entity work.quadrature_decoder
     generic map(
-      clk_freq => 12_000_000,
+      clk_freq => 12000000,
       ppr      => 1024
     )
     port map

@@ -15,13 +15,13 @@ VHDL_FILES = \
 
 VHDL_LIB_FILES = \
 	open-logic/src/base/vhdl/olo_base_pkg_attribute.vhd \
-	open-logic/src/base/vhdl/olo_base_pkg_logic.vhd \
-	open-logic/src/base/vhdl/olo_base_pkg_math.vhd \
 	open-logic/src/base/vhdl/olo_base_pkg_array.vhd \
+	open-logic/src/base/vhdl/olo_base_pkg_math.vhd \
+	open-logic/src/base/vhdl/olo_base_pkg_logic.vhd \
 	open-logic/src/base/vhdl/olo_base_strobe_gen.vhd \
 	open-logic/src/base/vhdl/olo_base_reset_gen.vhd \
-	open-logic/src/intf/vhdl/olo_intf_uart.vhd \
 	open-logic/src/intf/vhdl/olo_intf_sync.vhd \
+	open-logic/src/intf/vhdl/olo_intf_uart.vhd \
 	# open-logic/src/base/vhdl/olo_base_fifo_sync.vhd \
 	# open-logic/src/base/vhdl/olo_base_ram_sdp.vhd
 
@@ -40,10 +40,17 @@ SHELL := /bin/zsh
 
 all : bitstream flash
 
+sources:
+	@echo "Creating sources"
+	mkdir -p $(BUILD_DIR)
+	ghdl -a --std=08 --workdir=$(BUILD_DIR) --work=work $(VHDL_LIB_FILES)
+	ghdl -a --std=08 --workdir=$(BUILD_DIR) --work=work $(VHDL_FILES)
+	ghdl -a --std=08 --workdir=$(BUILD_DIR) --work=work $(VHDL_TOP)
+
 bitstream:
 	@echo "Creating bitstream"
 	mkdir -p $(BUILD_DIR)
-	yosys -m ghdl -p 'ghdl $(VHDL_TOP) $(VHDL_FILES) $(VHDL_LIB_FILES) -e $(TOP_MODULE); synth_$(FPGA_FAMILY) -json $(BUILD_DIR)/$(PROJECT_NAME).json'
+	yosys -m ghdl -p 'ghdl --std=08 $(VHDL_TOP) $(VHDL_FILES) $(VHDL_LIB_FILES) -e $(TOP_MODULE); synth_$(FPGA_FAMILY) -json $(BUILD_DIR)/$(PROJECT_NAME).json'
 	nextpnr-$(FPGA_FAMILY) --$(FPGA_DEVICE) --package $(FPGA_PACKAGE) --pcf $(FPGA_PINMAP) --json $(BUILD_DIR)/$(PROJECT_NAME).json --asc $(BUILD_DIR)/$(PROJECT_NAME).asc
 	icepack $(BUILD_DIR)/$(PROJECT_NAME).asc $(BUILD_DIR)/$(PROJECT_NAME)_bitstream.bin
 	@echo "Done - bitstream location : \"$(BUILD_DIR)/$(PROJECT_NAME)_bitstream.bin\""

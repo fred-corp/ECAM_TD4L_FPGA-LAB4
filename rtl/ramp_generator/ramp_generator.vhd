@@ -11,7 +11,7 @@ use ieee.math_real.all;
 
 entity ramp_generator is
   generic (
-    clk_freq : integer := 12_000_000 --* Clock frequency in Hz
+    clk_freq : integer := 12000000 --* Clock frequency in Hz
   );
   port (
     clk   : in std_logic; --* Main clock

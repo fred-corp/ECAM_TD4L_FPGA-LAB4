@@ -11,7 +11,7 @@ use ieee.math_real.all;
 
 entity quadrature_decoder is
   generic (
-    clk_freq : integer := 12_000_000; --* Clock frequency in Hz
+    clk_freq : integer := 12000000; --* Clock frequency in Hz
     ppr      : integer := 1024 --* Pulses per revolution
   );
   port (
