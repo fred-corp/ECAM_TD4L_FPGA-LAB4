@@ -220,6 +220,27 @@ begin
       speed_out       => ramp_speed_out
     );
 
+    -- *** PI Controller ***
+  pi_controller_inst : entity work.pi_controller
+    generic map(
+      clk_freq    => 12.0e6,
+      pi_period   => 100.0,
+      output_min  => 0,
+      output_max  => 32767,
+      dp_position => 8
+    )
+    port map
+    (
+      clk       => Clk,
+      reset     => reset,
+      auto      => '1',
+      Kp        => x"0001",
+      Ki        => x"0001",
+      setpoint  => x"0000",
+      pv        => x"0000",
+      output    => open
+    );
+
   -- *** Quadrature decoders ***
   quad_decoder1_inst : entity work.quadrature_decoder
     generic map(
