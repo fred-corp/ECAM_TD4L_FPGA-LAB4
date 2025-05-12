@@ -134,10 +134,10 @@ begin
         s_led_r       <= '0';
         s_led_g       <= '0';
         s_led_b       <= '0';
-        mot1_pwm      <= (others => '0');
-        mot2_pwm      <= (others => '0');
+        s_mot1_pwm      <= (others => '0');
+        s_mot2_pwm      <= (others => '0');
         s_echo_cycles <= (others => '0');
-        ramp_execute  <= '0';
+        s_ramp_execute  <= '0';
       end if;
     end if;
   end process main;
