@@ -208,6 +208,35 @@ begin
       speed_out       => ramp_speed_out
     );
 
+  -- *** Quadrature decoders ***
+  quad_decoder1_inst : entity work.quadrature_decoder
+    generic map(
+      clk_freq => 12_000_000,
+      ppr      => 1024
+    )
+    port map
+    (
+      clk         => Clk,
+      reset       => reset,
+      quad        => quad1,
+      count_valid => open,
+      count_out   => open
+    );
+
+  quad_decoder2_inst : entity work.quadrature_decoder
+    generic map(
+      clk_freq => 12_000_000,
+      ppr      => 1024
+    )
+    port map
+    (
+      clk         => Clk,
+      reset       => reset,
+      quad        => quad2,
+      count_valid => open,
+      count_out   => open
+    );
+
   main : process (clk)
   begin
     if rising_edge(clk) then

@@ -10,6 +10,7 @@ VHDL_FILES = \
 	rtl/pwm_driver/pwm_driver.vhd \
 	rtl/distance_driver/distance_driver.vhd \
 	rtl/ramp_generator/ramp_generator.vhd \
+	rtl/quadrature_decoder/quadrature_decoder.vhd \
 
 VHDL_LIB_FILES = \
 	open-logic/src/base/vhdl/olo_base_pkg_attribute.vhd \
