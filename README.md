@@ -1,8 +1,18 @@
 # FPGA Lab 4 - Robot
 
-## Overview
+## Summary
+
+* [Summary](#summary)
+* [Description](#description)
+* [How to `make`](#how-to-make)
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+* [License & Acknowledgements](#license--acknowledgements)
 
 ## Description
+
+this repository contains the code for the 4th lab of the FPGA course at ECAM Brussels.  
+The goal of this lab is to create a robot controller that is interfaced with a UART port, and handles the [Motor Driver](rtl/pwm_driver), [Ultrasonic Sensor](rtl/distance_driver), [Quadrature Encoder](rtl/quadrature_decoder), and PI/[Ramp](rtl/ramp_generator) controllers.
 
 ## How to `make`
 
@@ -10,9 +20,11 @@
 
 You need the following software installed on your computer :
 
-- [ICE40 Open SOurce Toolchain](https://github.com/dloubach/ice40-opensource-toolchain)
-- [Yosys with GHDL](https://github.com/ghdl/ghdl-yosys-plugin)
-- [Vunit](https://vunit.github.io/installing.html)
+* [ICE40 Open Source Toolchain](https://github.com/dloubach/ice40-opensource-toolchain)
+* [Yosys with GHDL](https://github.com/ghdl/ghdl-yosys-plugin)
+* [Vunit](https://vunit.github.io/installing.html)
+
+### Installation
 
 Clone the repository :
 
@@ -45,7 +57,6 @@ make testbench
 ```
 
 > Note :  You'll need Surfer installed on your device, as well as the correct VUnit version which supports Surfer. Otherwise you'll need to modify the Makefile to use GTKWave instead.
-
 
 ## License & Acknowledgements
 
