@@ -30,15 +30,24 @@ entity config_regs is
     mot1_pwm : out std_logic_vector(15 downto 0); --* Motor 1 PWM data
     mot2_pwm : out std_logic_vector(15 downto 0); --* Motor 2 PWM data
 
-    ramp_execute : out std_logic; --* Ramp execute signal
+    -- PI controller
+    pi_kp   : out std_logic_vector(15 downto 0); --* PI controller Kp
+    pi_ki   : out std_logic_vector(15 downto 0); --* PI controller Ki
+    pi_sp   : out std_logic_vector(15 downto 0); --* PI controller setpoint
+    pi_enable : out std_logic; --* PI controller enable
+
+    -- Ramp generator
+    ramp_time_delay      : out std_logic_vector(15 downto 0); --* Ramp time delay
+    ramp_target_speed    : out std_logic_vector(15 downto 0); --* Ramp target speed
+    ramp_fast_time       : out std_logic_vector(15 downto 0); --* Ramp fast time
+    ramp_speed_increment : out std_logic_vector(15 downto 0); --* Ramp speed increment
+    ramp_speed_decrement : out std_logic_vector(15 downto 0); --* Ramp speed decrement
+    ramp_execute_out     : out std_logic; --* Ramp execute output
 
     -- Inputs
     -- Distance driver
     echo_valid  : in std_logic; --* Echo signal valid flag
     echo_cycles : in unsigned(15 downto 0); --* Duration of the echo signal
-
-    -- Ramp generator
-    ramp_speed_out : in std_logic_vector(15 downto 0); --* Ramp speed output
 
     -- Encoders
     quad1_valid : in std_logic; --* Quadrature Encoder 1 valid
@@ -58,10 +67,20 @@ architecture rtl of config_regs is
 
   signal s_echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
 
-  signal s_ramp_execute : std_logic := '0'; --* Ramp execute signal
-
   signal s_quad1_count : std_logic_vector(15 downto 0) := (others => '0'); --* Quadrature Encoder 1 data
   signal s_quad2_count : std_logic_vector(15 downto 0) := (others => '0'); --* Quadrature Encoder 2 data
+
+  signal s_pi_kp : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Kp
+  signal s_pi_ki : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Ki
+  signal s_pi_sp : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller setpoint
+  signal s_pi_enable : std_logic := '0'; --* PI controller enable
+
+  signal s_ramp_time_delay : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp time delay
+  signal s_ramp_target_speed : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp target speed
+  signal s_ramp_fast_time : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp fast time
+  signal s_ramp_speed_increment : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed increment
+  signal s_ramp_speed_decrement : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed decrement
+  signal s_ramp_execute : std_logic := '0'; --* Ramp execute signal
 
 begin
   main : process (clk)
@@ -86,21 +105,54 @@ begin
             elsif s_paddr = x"08" then
               s_mot2_pwm <= s_pwdata;
 
+            -- PI controller registers
+            elsif s_paddr = x"14" then
+              s_pi_kp <= s_pwdata; -- Kp value
+            elsif s_paddr = x"16" then
+              s_pi_ki <= s_pwdata; -- Ki value
+            elsif s_paddr = x"18" then
+              s_pi_sp <= s_pwdata; -- Setpoint value
+            elsif s_paddr = x"20" then
+              s_pi_enable <= s_pwdata(0); -- Enable PI controller
+
+
               -- Ramp registers
+            elsif s_paddr = x"22" then
+              s_ramp_time_delay <= s_pwdata; -- Ramp time delay
+            elsif s_paddr = x"24" then
+              s_ramp_target_speed <= s_pwdata; -- Ramp target speed
+            elsif s_paddr = x"26" then
+              s_ramp_fast_time <= s_pwdata; -- Ramp fast time
+            elsif s_paddr = x"28" then
+              s_ramp_speed_increment <= s_pwdata; -- Ramp speed s_ramp_speed_increment
+            elsif s_paddr = x"30" then
+              s_ramp_speed_decrement <= s_pwdata; -- Ramp speed decrement
             elsif s_paddr = x"32" then
               s_ramp_execute <= s_pwdata(0);
+            else
+              -- Unused registers, do nothing
             end if;
           end if;
         else
           if s_penable = '0' then
             --* Read registers
-            -- Distance driver
+            -- LED registers
             if s_paddr = x"00" then
+              s_prdata(0) <= s_led_r;
+            elsif s_paddr = x"02" then
+              s_prdata(0) <= s_led_g;
+            elsif s_paddr = x"04" then
+              s_prdata(0) <= s_led_b;
+
+              -- Distance driver
+            elsif s_paddr = x"05" then
               s_prdata <= std_logic_vector(s_echo_cycles);
 
-              -- Ramp speed
-            elsif s_paddr = x"02" then
-              s_prdata <= ramp_speed_out;
+              -- Motor PWM registers
+            elsif s_paddr = x"06" then
+              s_prdata <= s_mot1_pwm;
+            elsif s_paddr = x"08" then
+              s_prdata <= s_mot2_pwm;
 
               -- Quadrature encoder 1
             elsif s_paddr = x"10" then
@@ -108,6 +160,31 @@ begin
               -- Quadrature encoder 2
             elsif s_paddr = x"12" then
               s_prdata <= s_quad2_count;
+
+              -- PI controller
+            elsif s_paddr = x"14" then
+              s_prdata <= s_pi_kp; -- Kp value
+            elsif s_paddr = x"16" then
+              s_prdata <= s_pi_ki; -- Ki value
+            elsif s_paddr = x"18" then
+              s_prdata <= s_pi_sp; -- Setpoint value
+            elsif s_paddr = x"20" then
+              s_prdata(0) <= s_pi_enable; -- Enable PI controller
+
+              -- Ramp registers
+            elsif s_paddr = x"22" then
+              s_prdata <= s_ramp_time_delay; -- Ramp time delay
+            elsif s_paddr = x"24" then
+              s_prdata <= s_ramp_target_speed; -- Ramp target speed
+            elsif s_paddr = x"26" then
+              s_prdata <= s_ramp_fast_time; -- Ramp fast time
+            elsif s_paddr = x"28" then
+              s_prdata <= s_ramp_speed_increment; -- Ramp speed increment
+            elsif s_paddr = x"30" then
+              s_prdata <= s_ramp_speed_decrement; -- Ramp speed decrement
+            elsif s_paddr = x"32" then
+              s_prdata(0) <= s_ramp_execute; -- Ramp execute signal
+
             else
               s_prdata <= x"0123";
             end if;
@@ -131,13 +208,13 @@ begin
 
       --* Reset signal
       if reset = '1' then
-        s_led_r       <= '0';
-        s_led_g       <= '0';
-        s_led_b       <= '0';
-        s_mot1_pwm      <= (others => '0');
-        s_mot2_pwm      <= (others => '0');
-        s_echo_cycles <= (others => '0');
-        s_ramp_execute  <= '0';
+        s_led_r        <= '0';
+        s_led_g        <= '0';
+        s_led_b        <= '0';
+        s_mot1_pwm     <= (others => '0');
+        s_mot2_pwm     <= (others => '0');
+        s_echo_cycles  <= (others => '0');
+        s_ramp_execute <= '0';
       end if;
     end if;
   end process main;
@@ -152,7 +229,18 @@ begin
   mot1_pwm <= s_mot1_pwm;
   mot2_pwm <= s_mot2_pwm;
 
-  -- Ramp speed signal
-  ramp_execute <= s_ramp_execute;
+  -- PI controller signals
+  pi_kp <= s_pi_kp;
+  pi_ki <= s_pi_ki;
+  pi_sp <= s_pi_sp;
+  pi_enable <= s_pi_enable;
+
+  -- Ramp generator signals
+  ramp_time_delay <= s_ramp_time_delay; -- Ramp time delay
+  ramp_target_speed <= s_ramp_target_speed; -- Ramp target speed
+  ramp_fast_time <= s_ramp_fast_time; -- Ramp fast time
+  ramp_speed_increment <= s_ramp_speed_increment; -- Ramp speed increment
+  ramp_speed_decrement <= s_ramp_speed_decrement; -- Ramp speed decrement
+  ramp_execute_out <= s_ramp_execute; -- Ramp execute output
 
 end architecture;

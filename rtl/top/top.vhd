@@ -64,9 +64,20 @@ architecture rtl of top is
   signal s_echo_valid  : std_logic             := '0'; --* Echo signal valid flag
   signal s_echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
 
+  -- PI controller
+  signal s_pi_kp   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Kp
+  signal s_pi_ki   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Ki
+  signal s_pi_sp   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller setpoint
+  signal s_pi_enable : std_logic                     := '0'; --* PI controller enable
+
   -- Ramp generator
-  signal ramp_execute   : std_logic                     := '0'; --* Ramp generator execute signal
-  signal ramp_speed_out : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp generator output speed
+  signal s_ramp_time_delay : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp time delay
+  signal s_ramp_target_speed : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp target speed
+  signal s_ramp_fast_time : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp fast time
+  signal s_ramp_speed_increment : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed increment
+  signal s_ramp_speed_decrement : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed decrement
+  signal s_ramp_execute : std_logic := '0'; --* Ramp execute signal
+  signal s_ramp_speed_out : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed output
 
   -- Quadrature encoders
   signal quad1_valid : std_logic                     := '0'; --* Quadrature Encoder 1 valid
@@ -133,27 +144,35 @@ begin
   config_registers_inst : entity work.config_regs
     port map
     (
-      clk            => Clk,
-      reset          => reset,
-      s_paddr        => apb_paddr,
-      s_psel         => apb_psel,
-      s_penable      => apb_penable,
-      s_pwrite       => apb_pwrite,
-      s_pwdata       => apb_pwdata,
-      s_prdata       => apb_prdata,
-      led_r          => led_out_r,
-      led_g          => led_out_g,
-      led_b          => led_out_b,
-      mot1_pwm       => mot1_pwm,
-      mot2_pwm       => mot2_pwm,
-      echo_valid     => s_echo_valid,
-      echo_cycles    => s_echo_cycles,
-      ramp_execute   => ramp_execute,
-      ramp_speed_out => ramp_speed_out,
-      quad1_valid    => quad1_valid,
-      quad1_count    => quad1_count,
-      quad2_valid    => quad2_valid,
-      quad2_count    => quad2_count
+      clk                  => Clk,
+      reset                => reset,
+      s_paddr              => apb_paddr,
+      s_psel               => apb_psel,
+      s_penable            => apb_penable,
+      s_pwrite             => apb_pwrite,
+      s_pwdata             => apb_pwdata,
+      s_prdata             => apb_prdata,
+      led_r                => led_out_r,
+      led_g                => led_out_g,
+      led_b                => led_out_b,
+      mot1_pwm             => mot1_pwm,
+      mot2_pwm             => mot2_pwm,
+      pi_kp                => s_pi_kp,
+      pi_ki                => s_pi_ki,
+      pi_sp                => s_pi_sp,
+      pi_enable            => s_pi_enable, -- TODO connect to controller selection logic
+      ramp_time_delay      => s_ramp_time_delay,
+      ramp_target_speed    => s_ramp_target_speed,
+      ramp_fast_time       => s_ramp_fast_time,
+      ramp_speed_increment => s_ramp_speed_increment,
+      ramp_speed_decrement => s_ramp_speed_decrement,
+      ramp_execute_out     => s_ramp_execute,
+      echo_valid           => s_echo_valid,
+      echo_cycles          => s_echo_cycles,
+      quad1_valid          => quad1_valid,
+      quad1_count          => quad1_count,
+      quad2_valid          => quad2_valid,
+      quad2_count          => quad2_count
     );
 
   -- *** PWM drivers ***
@@ -211,13 +230,13 @@ begin
       clk   => Clk,
       reset => reset,
 
-      time_delay      => std_logic_vector(to_unsigned(1, 16)),
-      target_speed    => std_logic_vector(to_unsigned(100, 16)),
-      fast_time       => std_logic_vector(to_unsigned(50, 16)),
-      speed_increment => std_logic_vector(to_unsigned(1, 16)),
-      speed_decrement => std_logic_vector(to_unsigned(1, 16)),
-      execute         => ramp_execute,
-      speed_out       => ramp_speed_out
+      time_delay      => s_ramp_time_delay,
+      target_speed    => s_ramp_target_speed,
+      fast_time       => s_ramp_fast_time,
+      speed_increment => s_ramp_speed_increment,
+      speed_decrement => s_ramp_speed_decrement,
+      execute         => s_ramp_execute,
+      speed_out       => open -- TODO connect controller selection logic (ramp/PI)
     );
 
   -- *** PI Controller ***
@@ -234,10 +253,10 @@ begin
       clk      => Clk,
       reset    => reset,
       auto     => '1',
-      Kp       => x"0001",
-      Ki       => x"0001",
-      setpoint => x"0000",
-      pv       => x"0000",
+      Kp       => s_pi_kp,
+      Ki       => s_pi_ki,
+      setpoint => s_pi_sp,
+      pv       => x"0000", -- TODO replace with actual process variable, calculate it from encoders
       output   => open
     );
 
@@ -274,6 +293,10 @@ begin
   begin
     if rising_edge(clk) then
       counter <= counter + 1;
+
+      -- TODO implement controller selection logic
+
+
       if reset = '1' then
         counter <= (others => '0');
       end if;
