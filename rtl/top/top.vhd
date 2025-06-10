@@ -65,20 +65,22 @@ architecture rtl of top is
   signal s_echo_cycles : unsigned(15 downto 0) := (others => '0'); --* Duration of the echo signal
 
   -- PI controller
-  signal s_pi_kp   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Kp
-  signal s_pi_ki   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Ki
-  signal s_pi_enable : std_logic                     := '0'; --* PI controller enable
+  signal s_pi_kp          : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Kp
+  signal s_pi_ki          : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Ki
+  signal s_pi_enable      : std_logic                     := '0'; --* PI controller enable
+  signal s_pi_mot1_pv     : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller process variable for motor 1
+  signal s_pi_mot2_pv     : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller process variable for motor 2
   signal s_pi_mot1_output : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller output for motor 1
   signal s_pi_mot2_output : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller output for motor 2
 
   -- Ramp generator
-  signal s_ramp_time_delay : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp time delay
-  signal s_ramp_target_speed : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp target speed
-  signal s_ramp_fast_time : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp fast time
+  signal s_ramp_time_delay      : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp time delay
+  signal s_ramp_target_speed    : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp target speed
+  signal s_ramp_fast_time       : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp fast time
   signal s_ramp_speed_increment : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed increment
   signal s_ramp_speed_decrement : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed decrement
-  signal s_ramp_execute : std_logic := '0'; --* Ramp execute signal
-  signal s_ramp_speed_out : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed output
+  signal s_ramp_execute         : std_logic                     := '0'; --* Ramp execute signal
+  signal s_ramp_speed_out       : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp speed output
 
   -- Quadrature encoders
   signal quad1_valid : std_logic                     := '0'; --* Quadrature Encoder 1 valid
@@ -164,8 +166,8 @@ begin
       mot2_pwm             => mot2_pwm,
       pi_kp                => s_pi_kp,
       pi_ki                => s_pi_ki,
-      pi_sp                => s_pi_sp,
-      pi_enable            => s_pi_enable, -- TODO connect to controller selection logic
+      pi_sp                => open,
+      pi_enable            => s_pi_enable,
       ramp_time_delay      => s_ramp_time_delay,
       ramp_target_speed    => s_ramp_target_speed,
       ramp_fast_time       => s_ramp_fast_time,
@@ -190,7 +192,7 @@ begin
     (
       clk       => Clk,
       reset     => reset,
-      pwm_data  => mot1_pwm,
+      pwm_data  => si_speed_mot1,
       pwm_out_1 => pwm_mot1(0),
       pwm_out_2 => pwm_mot1(1)
     );
@@ -203,7 +205,7 @@ begin
     (
       clk       => Clk,
       reset     => reset,
-      pwm_data  => mot2_pwm,
+      pwm_data  => si_speed_mot2,
       pwm_out_1 => pwm_mot2(0),
       pwm_out_2 => pwm_mot2(1)
     );
@@ -258,13 +260,13 @@ begin
       clk      => Clk,
       reset    => reset,
       auto     => '1',
-      Kp       => mot1_pwm,
+      Kp       => s_pi_kp,
       Ki       => s_pi_ki,
-      setpoint => s_pi_sp,
-      pv       => x"0000", -- TODO replace with actual process variable, calculate it from encoders
+      setpoint => mot1_pwm,
+      pv       => s_pi_mot1_pv,
       output   => s_pi_mot1_output
     );
-    pi_controller_mot2_inst : entity work.pi_controller
+  pi_controller_mot2_inst : entity work.pi_controller
     generic map(
       clk_freq    => 12.0e6,
       pi_period   => 100.0,
@@ -277,10 +279,10 @@ begin
       clk      => Clk,
       reset    => reset,
       auto     => '1',
-      Kp       => mot2_pwm,
+      Kp       => s_pi_kp,
       Ki       => s_pi_ki,
-      setpoint => s_pi_sp,
-      pv       => x"0000", -- TODO replace with actual process variable, calculate it from encoders
+      setpoint => mot2_pwm,
+      pv       => s_pi_mot1_pv,
       output   => s_pi_mot2_output
     );
 
@@ -328,6 +330,10 @@ begin
         si_speed_mot1 <= s_ramp_speed_out;
         si_speed_mot2 <= s_ramp_speed_out;
       end if;
+
+      --* PV calculation from encoder pulses
+      s_pi_mot1_pv <= std_logic_vector(resize((unsigned(quad1_count) * 360 / 1024), 16));
+      s_pi_mot2_pv <= std_logic_vector(resize((unsigned(quad2_count) * 360 / 1024), 16));
 
       if reset = '1' then
         counter <= (others => '0');
