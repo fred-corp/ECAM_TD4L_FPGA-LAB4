@@ -67,8 +67,9 @@ architecture rtl of top is
   -- PI controller
   signal s_pi_kp   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Kp
   signal s_pi_ki   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller Ki
-  signal s_pi_sp   : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller setpoint
   signal s_pi_enable : std_logic                     := '0'; --* PI controller enable
+  signal s_pi_mot1_output : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller output for motor 1
+  signal s_pi_mot2_output : std_logic_vector(15 downto 0) := (others => '0'); --* PI controller output for motor 2
 
   -- Ramp generator
   signal s_ramp_time_delay : std_logic_vector(15 downto 0) := (others => '0'); --* Ramp time delay
@@ -87,6 +88,10 @@ architecture rtl of top is
 
   -- Counter
   signal counter : unsigned(23 downto 0) := (others => '0'); --* Counter for LED blinking
+
+  -- Interconnect signals
+  signal si_speed_mot1 : std_logic_vector(15 downto 0) := (others => '0'); --* Interconnect signal for speed of motor 1
+  signal si_speed_mot2 : std_logic_vector(15 downto 0) := (others => '0'); --* Interconnect signal for speed of motor 2
 
 begin
   -- *** Reset resynchronization ***
@@ -236,11 +241,11 @@ begin
       speed_increment => s_ramp_speed_increment,
       speed_decrement => s_ramp_speed_decrement,
       execute         => s_ramp_execute,
-      speed_out       => open -- TODO connect controller selection logic (ramp/PI)
+      speed_out       => s_ramp_speed_out
     );
 
-  -- *** PI Controller ***
-  pi_controller_inst : entity work.pi_controller
+  -- *** PI Controllers ***
+  pi_controller_mot1_inst : entity work.pi_controller
     generic map(
       clk_freq    => 12.0e6,
       pi_period   => 100.0,
@@ -253,11 +258,30 @@ begin
       clk      => Clk,
       reset    => reset,
       auto     => '1',
-      Kp       => s_pi_kp,
+      Kp       => mot1_pwm,
       Ki       => s_pi_ki,
       setpoint => s_pi_sp,
       pv       => x"0000", -- TODO replace with actual process variable, calculate it from encoders
-      output   => open
+      output   => s_pi_mot1_output
+    );
+    pi_controller_mot2_inst : entity work.pi_controller
+    generic map(
+      clk_freq    => 12.0e6,
+      pi_period   => 100.0,
+      output_min  => 0,
+      output_max  => 32767,
+      dp_position => 8
+    )
+    port map
+    (
+      clk      => Clk,
+      reset    => reset,
+      auto     => '1',
+      Kp       => mot2_pwm,
+      Ki       => s_pi_ki,
+      setpoint => s_pi_sp,
+      pv       => x"0000", -- TODO replace with actual process variable, calculate it from encoders
+      output   => s_pi_mot2_output
     );
 
   -- *** Quadrature decoders ***
@@ -294,8 +318,16 @@ begin
     if rising_edge(clk) then
       counter <= counter + 1;
 
-      -- TODO implement controller selection logic
-
+      --* Controller selection (PI/Ramp)
+      if s_pi_enable = '0' then
+        -- Use PI controller output for motor speed
+        si_speed_mot1 <= s_pi_mot1_output;
+        si_speed_mot2 <= s_pi_mot2_output;
+      else
+        -- Use ramp generator output for motor speed
+        si_speed_mot1 <= s_ramp_speed_out;
+        si_speed_mot2 <= s_ramp_speed_out;
+      end if;
 
       if reset = '1' then
         counter <= (others => '0');
